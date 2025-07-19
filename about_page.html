@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   About Us - Bluzen MHS
+  </title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    nav a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  color: #004080;
+  text-decoration: none;
+}
+  
+
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0 !important;
+    text-align: center;
+    display: block;
+  }
+}
+
+
+   :root {
+      --primary: #6a1b9a;
+      --secondary: #ede7f6;
+      --accent: #ab47bc;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, var(--secondary), #ffffff);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://tse1.mm.bing.net/th/id/OIP.e631AL1tyv0cUhDhh82MrQHaCd?rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center/cover;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3em;
+      animation: fadeInText 2s forwards;
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section {
+      padding: 80px 10%;
+      background-color: white;
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .section h2 {
+      color: var(--primary);
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-align: center;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: #444;
+    }
+    .highlight-box {
+      background-color: #eef6fc;
+      padding: 40px;
+      border-radius: 10px;
+      margin-top: 60px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .highlight-box h3 {
+      font-size: 2em;
+      color: #0073e6;
+      margin-bottom: 15px;
+    }
+    .btn {
+      background-color: var(--primary);
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 30px;
+      display: inline-block;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(106,27,154,0.3);
+    }
+    .btn:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    footer {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 0px;
+    }
+    .mission-section {
+      background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+        url('https://tse4.mm.bing.net/th/id/OIP.dNWEsaT44sQ9IWKtHXOe3QHaFN?rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center/cover;
+      padding: 100px 10%;
+    }
+    .mission-icons {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .mission-icon {
+      flex: 1 1 200px;
+      max-width: 240px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 1;
+    }
+    }
+    .mission-icon:nth-child(1) { animation-delay: 0.2s; }
+    .mission-icon:nth-child(2) { animation-delay: 0.4s; }
+    .mission-icon:nth-child(3) { animation-delay: 0.6s; }
+    .mission-icon:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .mission-icon svg {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      fill: #0073e6;
+    }
+    .mission-icon h4 {
+      color: #004080;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeZoomIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  .reveal.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+    @media (max-width: 768px) {
+      header div {
+        flex-direction: column;
+        align-items: center;
+      }
+      header img {
+        max-width: 280px;
+        top: 20px;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+      .section h2 {
+        font-size: 2em;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .bubble {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  opacity: 0.1;
+  border-radius: 50%;
+  animation: floatBubble 6s infinite ease-in-out;
+}
+  @keyframes floatBubble {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-60px) scale(1.15);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+}
+    50% { transform: translateY(-40px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+  }
+    50% { transform: translateY(-30px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+  }
+  .parallax-bg {
+    background-image: url('https://tse2.mm.bing.net/th/id/OIP.qqiVf_gy-2-aQ4tecgnf7AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .parallax-section {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .parallax-section::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://tse2.mm.bing.net/th/id/OIP.qqiVf_gy-2-aQ4tecgnf7AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3') center center / cover no-repeat;
+    z-index: -1;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  </style>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #004080;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    .nav-menu {
+      flex-direction: column !important;
+      gap: 20px !important;
+      width: 100% !important;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background-color: white;
+      padding: 0;
+    }
+    .nav-menu.show {
+      max-height: 500px;
+      padding: 10px 0;
+    }
+    .nav-container a:first-child {
+      margin-bottom: 10px;
+      display: block;
+    }
+    body {
+      overflow-x: hidden;
+    }
+  }
+</style>
+<style>
+@media (max-width: 768px) {
+  .main-header {
+    background-color: #004080 !important;
+    background-image: none !important;
+  }
+  .main-header video {
+    display: none !important;
+  }
+  .why-bluzen {
+    background-color: #004080 !important;
+    background-image: none !important;
+  }
+}
+</style>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #004080;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      flex-direction: column !important;
+      gap: 20px !important;
+      width: 100% !important;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background-color: white;
+      padding: 0;
+    }
+    #navMenu.show {
+      max-height: 500px;
+      padding: 10px 0;
+    }
+  }
+</style>
+<style>
+  .hamburger {
+    width: 30px;
+    height: 25px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .hamburger span {
+    height: 3px;
+    background: #004080;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    #navMenu.show {
+      display: flex;
+    }
+  }
+</style>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+    z-index: 1001;
+  }
+  .hamburger span {
+    height: 3px;
+    background: #004080;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      background: white;
+      padding: 10px 20px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    #navMenu.show {
+      display: flex;
+    }
+  }
+</style>
+<style>
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px !important;
+    padding: 10px 20px !important;
+  }
+  .hamburger {
+    margin-left: auto;
+  }
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    background-color: white;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 20px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  .nav-menu.show {
+    display: flex;
+  }
+  .nav-menu a {
+    color: #004080 !important;
+    padding: 10px 0;
+    width: 100%;
+  }
+}
+</style><style>
+@media (max-width: 768px) {
+  a.btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 20px auto !important;
+  }
+}
+</style></head>
+<body>
+
+<nav class="main-nav" style="background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 5%; position: sticky; top: 0; z-index: 1000;">
+  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 40px; gap: 100px;">
+    <a href="index.html" style="font-size: 1.6em; font-weight: bold; color: #004080; text-decoration: none; pointer-events: none;">
+      Bluzen MHS
+    </a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-menu" id="navMenu" style="display: flex; gap: 50px; align-items: center;">
+      <a href="index.html" style="color: #004080; text-decoration: none; font-weight: 500;">Home</a>
+      <a href="services_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Services</a>
+      <a href="job_listings.html" style="color: #004080; text-decoration: none; font-weight: 500;">Jobs</a>
+      <a href="job_posting.html" style="color: #004080; text-decoration: none; font-weight: 500;">Post a Job</a>
+      <a href="about_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">About Us</a>
+      <a href="contact_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Contact Us</a>
+      <a class="btn" href="job_listings.html#job-listings" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: background-color 0.3s ease;">
+        Apply Now
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header style="background: white; position: relative;">
+<div class="bubbles">
+<div class="bubble" style="width: 80px; height: 80px; top: 10%; left: 15%; animation-delay: 0s;">
+</div>
+<div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 70%; animation-delay: 2s;">
+</div>
+<div class="bubble" style="width: 60px; height: 60px; top: 60%; left: 40%; animation-delay: 4s;">
+</div>
+<div class="bubble" style="width: 90px; height: 90px; top: 80%; left: 80%; animation-delay: 1s;">
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: justify; justify-content: space-between; gap: 50px; max-width: 1200px; margin: auto;">
+<div class="reveal" style="flex: 1 1 500px; min-width: 280px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out;">
+<h1 style="color: #004080; font-size: 3em; margin-bottom: 20px;">
+      About Bluzen MHS Staffing Agency
+     </h1>
+<p style="font-size: 1.1em; line-height: 1.9; color: #333; max-width: 600px; font-weight: 400;">
+      We’re more than a staffing agency—we’re a community of healthcare professionals empowering facilities and patients through dedication, care, and excellence. At Bluzen, our passion is connecting purpose-driven people to meaningful careers that drive real impact in the healthcare industry.
+     </p>
+<a class="btn" href="#mission" style="margin-top: 20px;">
+      Learn More
+     </a>
+</div>
+<div class="reveal" style="flex: 1 1 500px; min-width: 280px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out;">
+<img alt="About Bluzen" class="reveal" src="https://i.imgur.com/untnJwh.png" style="width: 100%; max-width: 420px; display: block; margin: auto; background-color: transparent; position: relative; top: 30px; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25)); opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out;"/>
+</div>
+</div>
+</header>
+<section class="section" style="position: relative; overflow: visible;">
+<div class="bubbles">
+<div class="bubble" style="width: 70px; height: 70px; top: -70px; left: 10%; animation-delay: 1s;">
+</div>
+<div class="bubble" style="width: 50px; height: 50px; top: 50%; left: 80%; animation-delay: 3s;">
+</div>
+<div class="bubble" style="width: 60px; height: 60px; top: 70%; left: 30%; animation-delay: 5s;">
+</div>
+</div>
+<h2>
+    Who We Are
+   </h2>
+<p>
+    At Bluzen, we believe compassionate care starts with exceptional people. As a trusted nursing staffing agency, we specialize in connecting healthcare facilities with highly skilled, dedicated, and credentialed nurses. Our commitment to quality and professionalism ensures both our clients and our staff receive the support they need to thrive.
+   </p>
+</section>
+<section class="section" style="color: white; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://tse2.mm.bing.net/th/id/OIP.qqiVf_gy-2-aQ4tecgnf7AHaHa?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3') fixed center center / cover no-repeat;">
+<div style="max-width: 1100px; margin: auto; text-align: center;">
+<h2 style="font-size: 2.8em; margin-bottom: 20px;">
+     Our Commitment to Care
+    </h2>
+<p style="font-size: 1.2em; line-height: 1.8; max-width: 850px; margin: 0 auto 30px; color: rgba(255,255,255,0.9);">
+     At Bluzen MHS, our story is grounded in the belief that every healthcare professional deserves support, respect, and opportunity. We’ve built our agency around the mission of enhancing both patient care and staff satisfaction. With deep roots in compassionate recruitment and placement, we strive to be more than a staffing solution—we are a trusted partner for growth.
+    </p>
+<p style="font-size: 1.1em; line-height: 1.6; max-width: 800px; margin: 0 auto; color: rgba(255,255,255,0.85);">
+     We are proud of the relationships we build and the difference we make in every healthcare setting we serve. Our dedication to excellence, transparency, and human connection sets us apart and keeps us focused on what matters most—people.
+    </p>
+</div>
+</section>
+<section class="section mission-section" id="mission">
+<h2>
+    Our Mission
+   </h2>
+<p>
+    Our mission at Bluzen MHS is to elevate the standards of healthcare staffing by building meaningful connections between professionals and institutions. We are dedicated to fostering environments where nurses and allied health professionals feel empowered, appreciated, and positioned for success. We aim to be the bridge that not only fills staffing gaps but also enhances patient care, clinical efficiency, and team morale.
+   </p>
+<p>
+    By embracing innovation, empathy, and rigorous credentialing, we ensure that every placement contributes to positive outcomes. We advocate for career development, work-life balance, and inclusive opportunities, recognizing that the best care begins with a supported workforce. Bluzen MHS is committed to becoming the most trusted name in healthcare staffing — one compassionate placement at a time.
+   </p>
+<div class="mission-icons">
+<div class="mission-icon" title="Compassionate support and patient-first service.">
+<svg fill="#0073e6" height="60" viewbox="0 0 24 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zm-8 0c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h10v-3.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.73.85.97 1.86.97 2.45V20h6v-3.5c0-2.33-4.67-3.5-7-3.5z">
+</path>
+</svg>
+<h4>
+      People First
+     </h4>
+<p>
+      We prioritize human connection and individualized support in every staffing solution.
+     </p>
+</div>
+<div class="mission-icon" title="Professional development and leadership growth.">
+<svg fill="#0073e6" height="60" viewbox="0 0 24 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 5.828V20h-2V5.828L5.636 11.192 4.222 9.778 12 2l7.778 7.778-1.414 1.414L13 5.828z">
+</path>
+</svg>
+<h4>
+      Empowered Careers
+     </h4>
+<p>
+      Enabling growth through mentorship, opportunity, and career mobility.
+     </p>
+</div>
+<div class="mission-icon" title="Trust, honesty, and long-term healthcare partnerships.">
+<svg fill="#0073e6" height="60" viewbox="0 0 24 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L4 5v6c0 5.25 3.66 10.74 8 11 4.34-.26 8-5.75 8-11V5l-8-3zm0 18c-2.67-.18-6-4.5-6-9V6.3l6-2.25 6 2.25V11c0 4.5-3.33 8.82-6 9z">
+</path>
+</svg>
+<h4>
+      Integrity &amp; Trust
+     </h4>
+<p>
+      Building long-term relationships grounded in transparency and reliability.
+     </p>
+</div>
+</div>
+</section>
+<section class="section" style="background: linear-gradient(to right, var(--primary), var(--accent)); color: white; text-align: center;">
+<h2 style="font-size: 2.5em; background: linear-gradient(to right, #fff, #ddd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    Ready to Make an Impact?
+   </h2>
+<p style="max-width: 700px; margin: 0 auto 20px; font-size: 1.2em; color: #f0f0f0;">
+    Join Bluzen MHS and become part of a team that values passion, dedication, and growth. Whether you're a seasoned professional or just starting your healthcare journey, we're here to support you every step of the way.
+   </p>
+<a class="btn" href="services_page.html">
+    Join Our Team
+   </a>
+</section>
+<footer>
+   © 2025 Bluzen MHS Healthcare Staffing Agency. All rights reserved.
+  </footer>
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+  });
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+  });
+  </script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
+    }
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
+</script>
+</body>
+</html>

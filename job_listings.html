@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #004080;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    .nav-menu {
+      flex-direction: column !important;
+      gap: 20px !important;
+      width: 100% !important;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background-color: white;
+      padding: 0;
+    }
+    .nav-menu.show {
+      max-height: 500px;
+      padding: 10px 0;
+    }
+    .nav-container a:first-child {
+      margin-bottom: 10px;
+      display: block;
+    }
+    body {
+      overflow-x: hidden;
+    }
+  }
+</style>
+<style>
+@media (max-width: 768px) {
+  .main-header {
+    background-color: #004080 !important;
+    background-image: none !important;
+  }
+  .main-header video {
+    display: none !important;
+  }
+  .why-bluzen {
+    background-color: #004080 !important;
+    background-image: none !important;
+  }
+}
+</style>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #004080;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      flex-direction: column !important;
+      gap: 20px !important;
+      width: 100% !important;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background-color: white;
+      padding: 0;
+    }
+    #navMenu.show {
+      max-height: 500px;
+      padding: 10px 0;
+    }
+  }
+</style>
+<style>
+  .hamburger {
+    width: 30px;
+    height: 25px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .hamburger span {
+    height: 3px;
+    background: #004080;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    #navMenu.show {
+      display: flex;
+    }
+  }
+</style>
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+    z-index: 1001;
+  }
+  .hamburger span {
+    height: 3px;
+    background: #004080;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    #navMenu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      background: white;
+      padding: 10px 20px;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    #navMenu.show {
+      display: flex;
+    }
+  }
+</style>
+<style>
+@media (max-width: 768px) {
+  .features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .feature {
+    width: 100% !important;
+  }
+  .nav-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px !important;
+    padding: 10px 20px !important;
+  }
+  .hamburger {
+    margin-left: auto;
+  }
+}
+</style><style>
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px !important;
+        padding: 10px 20px !important;
+      }
+      .hamburger {
+        margin-left: auto;
+      }
+      .nav-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background-color: white;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      .nav-menu.show {
+        display: flex;
+      }
+      .nav-menu a {
+        color: #004080 !important;
+        padding: 10px 0;
+        width: 100%;
+      }
+    }
+    </style><style>
+@media (max-width: 768px) {
+  .nav-menu a {
+    font-size: 1.2em !important;
+  }
+}
+</style></head>
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+</style>
+<!--Navigation-->
+<body>
+
+<nav class="main-nav" style="background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 5%; position: sticky; top: 0; z-index: 1000;">
+  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 40px; gap: 100px;">
+    <a href="index.html" style="font-size: 1.6em; font-weight: bold; color: #004080; text-decoration: none; pointer-events: none;">
+      Bluzen MHS
+    </a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-menu" id="navMenu" style="display: flex; gap: 50px; align-items: center;">
+      <a href="index.html" style="color: #004080; text-decoration: none; font-weight: 500;">Home</a>
+      <a href="services_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Services</a>
+      <a href="job_listings.html" style="color: #004080; text-decoration: none; font-weight: 500;">Jobs</a>
+      <a href="job_posting.html" style="color: #004080; text-decoration: none; font-weight: 500;">Post a Job</a>
+      <a href="about_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">About Us</a>
+      <a href="contact_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Contact Us</a>
+      <a class="btn" href="job_listings.html#job-listings" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: background-color 0.3s ease;">
+        Apply Now
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Job Filter Controls -->
+<div style=" top: 70px; background: linear-gradient(to right, #c8e6f9, #e1f5fe); z-index: 10; padding: 15px 8%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<label for="jobFilter" style="font-weight: bold; color: #004080; margin-right: 10px; font-size: 1.1em;">Filter by
+      Type:</label> <select id="jobFilter" onchange="filterJobs()" style="padding: 10px; font-size: 1em; border-radius: 8px; border: 2px solid #0073e6; background: #ffffff; color: #004080; font-weight: bold;">
+<option value="all">All</option>
+<option value="rn">Registered Nurse</option>
+<option value="ma">Medical Assistant</option>
+<option value="travel">Travel Nurse</option>
+<option value="cna">Certified Nursing Assistant</option>
+<option value="rt">Radiologic Technologist</option>
+<option value="lpn">Licensed Practical Nurse</option>
+<option value="ot">Occupational Therapist</option>
+<option value="phleb">Phlebotomist</option>
+</select>
+</div>
+<!-- Detailed Job Listings Section -->
+<section class="section job-listings" id="job-listings" style="padding: 100px 8%; background: linear-gradient(to bottom, #e1f5fe, #ffffff);">
+<h2 style="color: #004080; font-size: 2.8em; text-align: center; margin-bottom: 50px; animation: pulse 2s infinite alternate ease-in-out;">
+      Explore Career Opportunities</h2>
+  <h3 style="text-align:center;">Click for more info</h3>
+<div class="features" style="gap: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+<!-- Job Cards with Animated Border -->
+<style>
+        .feature summary {
+          cursor: pointer;
+          font-size: 1.2em;
+          display: flex;
+          align-items: center;
+          background: linear-gradient(145deg, #ffffff, #d4ecf8);
+          border: 2px solid #0073e6;
+          border-radius: 12px;
+          padding: 15px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
+        }
+
+        .feature summary:hover {
+          background-color: #e0f7fa;
+          transform: scale(1.02);
+        }
+
+        .feature {
+          background: #ffffff;
+          border-radius: 15px;
+          padding: 20px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border: 2px dashed #b3e5fc;
+          animation: fadeInUp 1s ease forwards;
+        }
+
+        .feature:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature p {
+          color: #333;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+            color: #004080;
+          }
+
+          100% {
+            transform: scale(1.02);
+            color: #0073e6;
+          }
+        }
+      </style>
+<!-- Job Cards -->
+<details class="feature fade-in-up" data-role="rn">
+<summary><img alt="Nurse Icon" src="https://cdn-icons-png.flaticon.com/512/3209/3209120.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Registered Nurse (RN)</strong>
+</summary>
+<p><strong>Description:</strong> Deliver patient-centered care, coordinate with interdisciplinary teams, and
+          manage complex medical conditions in fast-paced environments.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Administer medications and treatments<br/>
+          - Monitor patient progress and update charts<br/>
+          - Educate patients and families on care plans<br/>
+          - Collaborate with doctors and specialists</p>
+<p><strong>Qualifications:</strong><br/>
+          - Active RN license<br/>
+          - BLS/ACLS certified<br/>
+          - 1-2 years of clinical experience</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="ma">
+<summary><img alt="Assistant Icon" src="https://cdn-icons-png.flaticon.com/512/599/599305.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Medical Assistant</strong>
+</summary>
+<p><strong>Description:</strong> Provide administrative and clinical support in hospitals or outpatient
+          facilities, ensuring seamless patient care and office flow.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Greet and prepare patients for exams<br/>
+          - Handle patient records and scheduling<br/>
+          - Assist with minor procedures<br/>
+          - Draw blood and collect samples</p>
+<p><strong>Qualifications:</strong><br/>
+          - Certified Medical Assistant (CMA)<br/>
+          - Proficient in EMR systems<br/>
+          - Strong communication skills</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="travel">
+<summary><img alt="Travel Icon" src="https://cdn-icons-png.flaticon.com/512/4086/4086679.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Travel Nurse</strong></summary>
+<p><strong>Description:</strong> Embrace flexible assignments across various states, bringing expertise and
+          compassion to high-need areas while expanding your clinical experience.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Adapt to diverse hospital protocols<br/>
+          - Fill short-term staffing shortages<br/>
+          - Deliver exceptional bedside care<br/>
+          - Maintain documentation compliance</p>
+<p><strong>Qualifications:</strong><br/>
+          - Active multistate RN license<br/>
+          - Minimum 1 year specialty experience<br/>
+          - Willingness to travel nationwide</p>
+<a class="job-btn" href="#job-listings">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="cna">
+<summary><img alt="CNA Icon" src="https://cdn-icons-png.flaticon.com/512/3771/3771374.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Certified Nursing Assistant
+            (CNA)</strong></summary>
+<p><strong>Description:</strong> Support patient needs with empathy and professionalism, assisting with personal
+          care and daily routines in hospitals or long-term care settings.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Help with bathing, dressing, feeding<br/>
+          - Monitor vital signs<br/>
+          - Report changes in condition<br/>
+          - Provide emotional support</p>
+<p><strong>Qualifications:</strong><br/>
+          - Current CNA certification<br/>
+          - CPR certified<br/>
+          - Experience with elderly or disabled care preferred</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="rt">
+<summary><img alt="Xray Icon" src="https://cdn-icons-png.flaticon.com/512/3602/3602107.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Radiologic Technologist</strong>
+</summary>
+<p><strong>Description:</strong> Perform diagnostic imaging exams, ensuring accurate results while prioritizing
+          patient safety and comfort.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Operate X-ray, CT, and MRI machines<br/>
+          - Prepare patients for procedures<br/>
+          - Maintain radiation safety standards<br/>
+          - Communicate findings to physicians</p>
+<p><strong>Qualifications:</strong><br/>
+          - ARRT certification<br/>
+          - Associate’s degree in Radiologic Technology<br/>
+          - Detail-oriented and tech-savvy</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="lpn">
+<summary><img alt="LPN Icon" src="https://cdn-icons-png.flaticon.com/512/942/942748.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Licensed Practical Nurse
+            (LPN)</strong></summary>
+<p><strong>Description:</strong> Support registered nurses and physicians by providing essential patient care,
+          administering medication, and monitoring health conditions.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Administer prescribed medications<br/>
+          - Monitor patient health and report changes<br/>
+          - Assist in wound care and dressing changes<br/>
+          - Record patient histories</p>
+<p><strong>Qualifications:</strong><br/>
+          - Valid LPN license<br/>
+          - Completion of accredited LPN program<br/>
+          - Compassionate with strong interpersonal skills</p>
+<a class="job-btn" href="#job-listings">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="ot">
+<summary><img alt="OT Icon" src="https://cdn-icons-png.flaticon.com/512/3412/3412835.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Occupational Therapist</strong>
+</summary>
+<p><strong>Description:</strong> Help patients of all ages develop, recover, and improve the skills needed for
+          daily living and working through therapeutic strategies.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Create individualized treatment plans<br/>
+          - Use therapeutic techniques to improve motor skills<br/>
+          - Educate patients and caregivers<br/>
+          - Evaluate patient progress and adapt therapy</p>
+<p><strong>Qualifications:</strong><br/>
+          - Licensed Occupational Therapist<br/>
+          - Master’s degree in Occupational Therapy<br/>
+          - Strong analytical and interpersonal skills</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+<details class="feature fade-in-up" data-role="phleb">
+<summary><img alt="Phlebotomy Icon" src="https://cdn-icons-png.flaticon.com/512/809/809957.png" style="width: 40px; margin-right: 10px;"/> <strong style="color: #0073e6;">Phlebotomist</strong></summary>
+<p><strong>Description:</strong> Specialize in drawing blood samples for tests, transfusions, donations, or
+          research, ensuring proper patient identification and sample handling.</p>
+<p><strong>Responsibilities:</strong><br/>
+          - Draw blood and label specimens accurately<br/>
+          - Maintain a clean and safe work environment<br/>
+          - Verify patient identity before procedures<br/>
+          - Transport samples to lab for processing</p>
+<p><strong>Qualifications:</strong><br/>
+          - Certification from accredited phlebotomy program<br/>
+          - Excellent hand-eye coordination<br/>
+          - Strong attention to detail</p>
+<a class="job-btn" href="#apply">Apply Now</a>
+</details>
+</div>
+</section>
+<!-- Job Application Form Section -->
+<section id="apply" style="padding: 60px 8%; background-color: #f4f7fb;">
+<h2 style="text-align: center; color: #004080; font-size: 2.2em; margin-bottom: 40px;">Apply for a Healthcare
+      Position
+    </h2>
+<section style="padding: 60px 8%; background-color: #f4f7fb;">
+<form action="https://formspree.io/f/mwpbgqaa" method="POST" style="max-width: 800px; margin: 0 auto; background-color: #ffffff;
+         padding: 40px 50px; border-radius: 10px;
+         box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-family: 'Open Sans', sans-serif;">
+<!-- Hidden Formspree Fields -->
+<input name="_subject" type="hidden" value="New Job Application from Bluzen MHS"/>
+<input name="_next" type="hidden" value="https://yourdomain.com/thank-you.html"/>
+<!-- Full Name -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="name" style="font-weight: bold; color: #004080;">Full Name:</label>
+<input id="name" name="name" required="" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;" type="text"/>
+</div>
+<!-- Email -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="email" style="font-weight: bold; color: #004080;">Email Address:</label>
+<input id="email" name="email" required="" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;" type="email"/>
+</div>
+<!-- Phone -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="phone" style="font-weight: bold; color: #004080;">Phone Number:</label>
+<input id="phone" name="phone" required="" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;" type="tel"/>
+</div>
+<!-- Position -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="position" style="font-weight: bold; color: #004080;">Position Applying For:</label>
+<select id="position" name="position" required="" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;">
+<option value="rn">Registered Nurse</option>
+<option value="ma">Medical Assistant</option>
+<option value="travel">Travel Nurse</option>
+<option value="lpn">Licensed Practical Nurse</option>
+<option value="cna">Certified Nursing Assistant</option>
+<option value="rt">Radiologic Technologist</option>
+<option value="ot">Occupational Therapist</option>
+<option value="phleb">Phlebotomist</option>
+</select>
+</div>
+<!-- Message -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="message" style="font-weight: bold; color: #004080;">Message:</label>
+<textarea id="message" name="message" rows="4" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;"></textarea>
+</div>
+<!-- Location -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="location" style="font-weight: bold; color: #004080;">Preferred Location:</label>
+<input id="location" name="location" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;" type="text"/>
+</div>
+<!-- Availability -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="availability" style="font-weight: bold; color: #004080;">Availability:</label>
+<select id="availability" name="availability" required="" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;">
+<option value="full-time">Full-Time</option>
+<option value="part-time">Part-Time</option>
+<option value="per-diem">Per Diem</option>
+<option value="travel">Travel</option>
+</select>
+</div>
+<!-- Start Date -->
+<div class="form-group" style="margin-bottom: 20px;">
+<label for="start-date" style="font-weight: bold; color: #004080;">Available Start Date:</label>
+<input id="start-date" name="start-date" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 6px;
+             border: 1px solid #ccc; box-sizing: border-box;" type="date"/>
+</div>
+<!-- Resume Note -->
+<div class="form-group" style="margin-bottom: 30px;">
+<label style="font-weight: bold; color: #004080;">Resume:</label><br/>
+<input disabled="" style="opacity: 0.5;" type="file"/>
+<small style="color: #888;">Resume uploads are not supported. Please email your resume to
+            <strong>stargrazer11hd@gmail.com</strong> after submitting.</small>
+</div>
+<!-- Submit Button -->
+<div style="text-align: center;">
+<button class="btn" style="background-color: #0073e6; color: white; padding: 14px 30px;
+             border-radius: 6px; font-size: 1.1em; font-weight: bold;
+             cursor: pointer; border: none;" type="submit">
+            Submit Application
+          </button>
+</div>
+</form>
+</section>
+</section>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
+    }
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
+</script>
+</body>
+<script>
+  function filterJobs() {
+    const filter = document.getElementById('jobFilter').value;
+    const jobs = document.querySelectorAll('.job-listings .feature');
+    jobs.forEach(job => {
+      if (filter === 'all' || job.dataset.role === filter) {
+        job.style.display = 'block';
+      } else {
+        job.style.display = 'none';
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.job-btn');
+    const jobSelect = document.getElementById('position');
+    const clickSound = new Audio('https://www.myinstants.com/media/sounds/button-click.mp3');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const jobTitle = button.closest('details')?.querySelector('summary strong')?.textContent;
+        if (!jobTitle || !jobSelect) return;
+        for (let i = 0; i < jobSelect.options.length; i++) {
+          if (jobTitle.includes(jobSelect.options[i].textContent)) {
+            jobSelect.selectedIndex = i;
+            break;
+          }
+        }
+        clickSound.currentTime = 0;
+        clickSound.play();
+        document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector('form');
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+
+    if (form && name && email && phone) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!name.value.trim() || !email.value.trim() || !phone.value.trim()) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Formspree will now receive it
+        form.submit();
+      });
+    }
+  });
+
+  // Validate required fields
+  const requiredFields = ['name', 'email', 'phone', 'position'];
+  for (let id of requiredFields) {
+    const field = document.getElementById(id);
+    if (!field.value.trim()) {
+      alert(`Please fill out the ${id.replace('-', ' ')} field.`);
+      field.focus();
+      return;
+    }
+  }
+
+  // Optionally send to server via fetch or Formspree integration here
+  // Example (uncomment and customize for backend):
+  // fetch('/submit-form', {
+  //   method: 'POST',
+  //   body: new FormData(this)
+  // })
+  // .then(response => response.json())
+  // .then(data => alert('Application submitted!'))
+  // .catch(err => alert('Submission failed.'));
+
+  // Show success confirmation
+  alert('Application submitted successfully!');
+  this.reset();
+  });
+</script>
