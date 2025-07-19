@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post a Job | Bluzen MHS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f4f9ff;
+      margin: 0;
+      color: #333;
+    }
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    nav a {
+      color: #004080;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .btn {
+      background-color: #0073e6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #005bb5;
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://tse3.mm.bing.net/th/id/OIP.SUj9h-B7zHllE-0EtN0ZigHaEK?rs=1&pid=ImgDetMain') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+    header p {
+      font-size: 1.2em;
+    }
+    .section {
+      padding: 80px 10%;
+    }
+    .section h2 {
+      text-align: center;
+      color: #004080;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    form {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      color: #004080;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    textarea {
+      resize: vertical;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 80px;
+    }
+    footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: auto;
+  z-index: 1001;
+}
+.hamburger span {
+  height: 3px;
+  background: #004080;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 10px 20px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  .nav-menu.show {
+    display: flex;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href="index.html" style="font-size: 1.6em; font-weight: bold;">Bluzen MHS</a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="services_page.html">Services</a>
+      <a href="job_listings.html">Jobs</a>
+      <a href="job_posting.html">Post a Job</a>
+      <a href="about_page.html">About Us</a>
+      <a href="contact_page.html">Contact Us</a>
+      <a class="btn" href="job_listings.html#job-listings">Apply Now</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>Post a Healthcare Job</h1>
+  <p>List your job opening and connect with qualified healthcare professionals fast.</p>
+</header>
+
+<section class="section">
+  <h2>Submit Job Details</h2>
+  <form action="https://formspree.io/f/mwpbgqaa" method="POST">
+    <div class="form-group"><label for="company">Facility Name*</label><input type="text" name="company" id="company" required></div>
+    <div class="form-group"><label for="contact_name">Contact Name*</label><input type="text" name="contact_name" id="contact_name" required></div>
+    <div class="form-group"><label for="contact_email">Contact Email*</label><input type="email" name="contact_email" id="contact_email" required></div>
+    <div class="form-group"><label for="job_title">Job Title*</label><input type="text" name="job_title" id="job_title" required></div>
+    <div class="form-group"><label for="location">Location*</label><input type="text" name="location" id="location" required></div>
+    <div class="form-group"><label for="job_type">Job Type*</label><select name="job_type" id="job_type" required><option value="">Select...</option><option>Full-Time</option><option>Part-Time</option><option>Per Diem</option><option>Travel</option><option>Contract</option></select></div>
+    <div class="form-group"><label for="description">Job Description*</label><textarea name="description" id="description" rows="5" required></textarea></div>
+    <div class="form-group"><label for="requirements">Qualifications</label><textarea name="requirements" id="requirements" rows="4"></textarea></div>
+    <div class="form-group"><label for="pay">Pay Rate / Salary</label><input type="text" name="pay" id="pay"></div>
+    <div class="form-group"><label for="notes">Additional Notes</label><textarea name="notes" id="notes" rows="3"></textarea></div>
+    <div style="text-align:center;"><button class="btn" type="submit">Submit Job Posting</button></div>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 Bluzen MHS. All rights reserved.</p>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="services_page.html">Services</a> |
+    <a href="job_listings.html">Jobs</a> |
+    <a href="contact_page.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+function toggleMenu(btn) {
+  const menu = document.getElementById("navMenu");
+  if (menu) {
+    menu.classList.toggle("show");
+    btn.classList.toggle("open");
+  }
+}
+</script>
+
+</body>
+</html>
