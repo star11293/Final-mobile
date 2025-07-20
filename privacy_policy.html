@@ -14,6 +14,71 @@
       color: #333;
       line-height: 1.6;
     }
+    .hamburger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+    .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  justify-content: center;
+  gap: 6px;
+}
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: #0073e6;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Mobile Styles */
+@media (max-width: 800px) {
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    min-width: 180px;
+    z-index: 2000;
+  }
+  .nav-menu.show {
+    display: flex;
+  }
+  nav {
+    padding: 10px 20px;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .nav-menu a {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .nav-menu a:last-child {
+    border-bottom: none;
+  }
+}
     nav {
       background-color: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -87,7 +152,12 @@
 
 <nav>
   <div class="nav-container">
-    <a href="index.html" style="font-size: 1.6em; font-weight: bold;">Bluzen MHSA</a>
+    <a href="index.html" style="font-size: 1.6em; font-weight: bold;">Bluzen MHS</a>
+    <div class="hamburger" id="hamburgerMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="nav-menu" id="navMenu">
       <a href="index.html">Home</a>
       <a href="services_page.html">Services</a>
@@ -142,6 +212,22 @@
     <a href="contact_page.html">Contact</a>
   </p>
 </footer>
+<script>
+  const hamburger = document.getElementById('hamburgerMenu');
+  const navMenu = document.getElementById('navMenu');
 
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+    hamburger.classList.toggle('active');
+  });
+
+  // Optional: close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+      navMenu.classList.remove('show');
+      hamburger.classList.remove('active');
+    }
+  });
+</script>
 </body>
 </html>
