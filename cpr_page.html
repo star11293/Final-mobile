@@ -16,13 +16,17 @@
   left: 0;
 }
 .bubble {
-  position: absolute;
-  background: rgba(255,255,255,0.9); /* white, mostly opaque */
+
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  animation: floatBubble 12s linear infinite;
-  box-shadow: 0 8px 32px 0 rgba(255,255,255,0.3); /* optional: white shadow */
+  background: #2196f3;        /* brighter blue */
+  border: 3px solid #fff;     /* white border */
+  box-shadow: 0 0 12px #0008; /* subtle shadow */
+  margin: 16px;
+
 }
-}
+
 @keyframes floatBubble {
   0% { transform: translateY(0) scale(1);}
   50% { transform: translateY(-80px) scale(1.1);}
