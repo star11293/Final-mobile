@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CPR Classes Calendar</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .calendar-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff8f0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      border-radius: 30px;
+      padding: 40px 30px;
+      animation: popin 1s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes popin {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .calendar-header {
+      text-align: center;
+      font-size: 2.4em;
+      font-weight: bold;
+      color: #ff6f61;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 10px #ffe5d0;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      font-size: 1.2em;
+      margin: 0 auto;
+    }
+    .calendar-day,
+    .calendar-date {
+      text-align: center;
+      padding: 13px 0;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      user-select: none;
+    }
+    .calendar-day {
+      background: #ffd7b5;
+      color: #b45f04;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-size: 1.1em;
+    }
+    .calendar-date {
+      background: #ffe0c6;
+      color: #e37400;
+      box-shadow: 0 2px 8px rgba(255,175,75,0.08);
+    }
+    .calendar-date.available {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      color: #fff;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,106,106,0.2); }
+      70% { box-shadow: 0 0 0 16px rgba(255,106,106,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,106,106,0); }
+    }
+    .calendar-date.available:hover {
+      background: linear-gradient(135deg, #ff6f61 0%, #fcb69f 100%);
+      color: #fffbe9;
+      transform: scale(1.13) rotate(-3deg);
+      box-shadow: 0 4px 24px #ff9a9e55;
+    }
+    .calendar-date.today {
+      border: 3px solid #ff6f61;
+      background: #fff8e1;
+      color: #ff6f61;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    @media (max-width: 700px) {
+      .calendar-container {
+        padding: 15px 3px;
+      }
+      .calendar-header {
+        font-size: 1.4em;
+      }
+      .calendar {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar-container">
+    <div class="calendar-header">CPR Classes - August 2025</div>
+    <div class="calendar" id="calendar"></div>
+  </div>
+  <script>
+    // Example: Available class dates
+    const availableDates = [4, 7, 10, 15, 18, 22, 25, 29];
+
+    // Calendar for August 2025 (adjust as needed)
+    const year = 2025;
+    const month = 7; // August (0-indexed)
+    const today = new Date();
+
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const calendar = document.getElementById('calendar');
+
+    // Add day headers
+    daysOfWeek.forEach(day => {
+      const div = document.createElement('div');
+      div.className = 'calendar-day';
+      div.innerText = day;
+      calendar.appendChild(div);
+    });
+
+    // First day of the month
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month+1, 0).getDate();
+
+    // Fill in blank days before first
+    for (let i = 0; i < firstDay; i++) {
+      const div = document.createElement('div');
+      div.className = 'calendar-date';
+      calendar.appendChild(div);
+    }
+
+    // Fill in days
+    for (let d = 1; d <= daysInMonth; d++) {
+      const div = document.createElement('div');
+      div.className = 'calendar-date';
+
+      // Highlight today
+      if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
+        div.classList.add('today');
+      }
+
+      // Mark available class dates
+      if (availableDates.includes(d)) {
+        div.classList.add('available');
+        const a = document.createElement('a');
+        a.href = ""; // Link to class registration/details page (currently empty)
+        a.innerText = d;
+        div.appendChild(a);
+      } else {
+        div.innerText = d;
+      }
+      calendar.appendChild(div);
+    }
+  </script>
+</body>
+</html>
