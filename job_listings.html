@@ -476,11 +476,12 @@
 </section>
 <!-- Job Application Form Section -->
 <section id="apply" style="padding: 60px 8%; background-color: #f4f7fb;">
+  
 <h2 style="text-align: center; color: #004080; font-size: 2.2em; margin-bottom: 40px;">Apply for a Healthcare
       Position
     </h2>
 <section style="padding: 60px 8%; background-color: #f4f7fb;">
-<form action="https://formspree.io/f/myzpzedr" method="POST" style="max-width: 800px; margin: 0 auto; background-color: #ffffff;
+<form action="https://formspree.io/f/myzpzedr" method="POST" enctype="multipart/form-data"  style="max-width: 800px; margin: 0 auto; background-color: #ffffff;
          padding: 40px 50px; border-radius: 10px;
          box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-family: 'Open Sans', sans-serif;">
 <!-- Hidden Formspree Fields -->
@@ -549,12 +550,11 @@
              border: 1px solid #ccc; box-sizing: border-box;" type="date"/>
 </div>
 <!-- Resume Note -->
-<div class="form-group" style="margin-bottom: 30px;">
-<label style="font-weight: bold; color: #004080;">Resume:</label><br/>
-<input disabled="" style="opacity: 0.5;" type="file"/>
-<small style="color: #888;">Resume uploads are not supported. Please email your resume to
-            <strong>Andrew@bluzenhealthcarestaffing.com</strong> after submitting.</small>
-</div>
+div class="form-group" style="margin-bottom: 30px;">
+    <label for="resume" style="font-weight: bold; color: #004080;">Resume:</label><br/>
+    <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx" required style="width:100%;"/>
+    <small style="color: #888;">Accepted formats: PDF, DOC, DOCX. Max file size: (set by Formspree limits).</small>
+  </div>
 <!-- Submit Button -->
 <div style="text-align: center;">
 <button class="btn" style="background-color: #0073e6; color: white; padding: 14px 30px;
