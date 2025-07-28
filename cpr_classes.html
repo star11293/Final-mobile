@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CPR Classes Calendar</title>
   <style>
     body {
@@ -89,6 +90,7 @@
       width: 100%;
       height: 100%;
     }
+    /* Existing media query for tablets and small screens */
     @media (max-width: 700px) {
       .calendar-container {
         padding: 15px 3px;
@@ -98,6 +100,27 @@
       }
       .calendar {
         font-size: 1em;
+      }
+    }
+    /* Extra mobile responsiveness for very small screens */
+    @media (max-width: 480px) {
+      .calendar-container {
+        margin: 10px 2px;
+        padding: 8px 2px;
+        border-radius: 16px;
+      }
+      .calendar-header {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+      }
+      .calendar {
+        font-size: 0.9em;
+        gap: 4px;
+      }
+      .calendar-day,
+      .calendar-date {
+        padding: 8px 0;
+        font-size: 0.95em;
       }
     }
   </style>
