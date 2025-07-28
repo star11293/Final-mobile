@@ -16,7 +16,6 @@
   left: 0;
 }
 .bubble {
-
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -24,16 +23,14 @@
   border: 3px solid #fff;
   box-shadow: 0 0 12px #0008;
   margin: 16px;
-  opacity: 0.92; /* Adjust this for desired visibility */
+  position: absolute;
   animation: floatBubble 6s ease-in-out infinite;
-
-
 }
-
 @keyframes floatBubble {
   0% { transform: translateY(0) scale(1);}
   50% { transform: translateY(-80px) scale(1.1);}
   100% { transform: translateY(0) scale(1);}
+}
 }
     /* Makes the Bubbles Appear smaller On mobile screens*/
 
