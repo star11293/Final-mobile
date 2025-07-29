@@ -7,126 +7,6 @@
 <title>
    Bluzen MHS Healthcare Staffing Agency
   </title>
-   <style>
-      .main-nav {
-  background-color: #004080;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-  padding: 10px 40px;
-}
-
-.logo {
-  color: #fff;
-  font-size: 1.6em;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  transition: max-height 0.4s ease;
-}
-
-.nav-menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.nav-menu .btn {
-  background-color: #00c896;
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  margin: 5px 0;
-  background: #fff;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Responsive Styles */
-@media (max-width: 900px) {
-  .nav-menu {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 10px 20px;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .nav-menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: #004080;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 20px;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 999;
-  }
-  .nav-menu.show {
-    display: flex;
-  }
-  .nav-menu a, .nav-menu .btn {
-    width: 100%;
-    text-align: left;
-    color: #fff;
-    background: none;
-  }
-}
-</style>
 <style>
    @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(30px); }
@@ -675,38 +555,27 @@ html, body {
 <body style="; overflow-x: hidden;">
 <!-- Navigation -->
 
-<!-- Navigation Bar - Copy & Paste -->
-<nav class="main-nav" style="background-color: #004080; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 5%; position: sticky; top: 0; z-index: 1000;">
-  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 40px;">
-    <a href="index.html" style="font-size: 1.6em; font-weight: bold; color: #fff; text-decoration: none;">
+<nav class="main-nav" style="background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 5%; position: sticky; top: 0; z-index: 1000;">
+  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 40px; gap: 100px;">
+    <a href="index.html" style="font-size: 1.6em; font-weight: bold; color: #004080; text-decoration: none; pointer-events: none;">
       Bluzen MHSA
     </a>
-    <div class="hamburger" onclick="toggleMenu(this)" style="display: none; flex-direction: column; cursor: pointer;">
-      <span style="height:3px; background:#fff; margin:5px 0; border-radius:2px; display:block;"></span>
-      <span style="height:3px; background:#fff; margin:5px 0; border-radius:2px; display:block;"></span>
-      <span style="height:3px; background:#fff; margin:5px 0; border-radius:2px; display:block;"></span>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
     </div>
-   <nav class="main-nav">
-  <div class="nav-container">
-    <a href="index.html" class="logo">Bluzen MHSA</a>
-    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="nav-menu" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="services_page.html">Services</a>
-      <a href="job_listings.html">Jobs</a>
-      <a href="job_posting.html">Post a Job</a>
-      <a href="about_page.html">About Us</a>
-      <a href="contact_page.html">Contact Us</a>
-      <a class="btn" href="job_listings.html#job-listings">Apply Now</a>
+    <div class="nav-menu" id="navMenu" style="display: flex; gap: 50px; align-items: center;">
+      <a href="index.html" style="color: #004080; text-decoration: none; font-weight: 500;">Home</a>
+      <a href="services_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Services</a>
+      <a href="job_listings.html" style="color: #004080; text-decoration: none; font-weight: 500;">Jobs</a>
+      <a href="job_posting.html" style="color: #004080; text-decoration: none; font-weight: 500;">Post a Job</a>
+      <a href="about_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">About Us</a>
+      <a href="contact_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Contact Us</a>
+      <a class="btn" href="job_listings.html#job-listings" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: background-color 0.3s ease;">
+        Apply Now
+      </a>
     </div>
   </div>
 </nav>
-<!-- Navigation Styles (Include in your <head>) -->
-
 
 <!-- Header Section -->
 <header class="main-header main-header" style="position: relative; height: 100vh; width: 100vw; overflow: hidden;">
@@ -885,28 +754,40 @@ html, body {
     © 2025 Bluzen Medical Healthcare Staffing Agency. All rights reserved.
   </div>
 </footer>
-
-</script>
-  
-     <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.getElementById('hamburger-btn');
-  const navMenu = document.getElementById('navMenu');
-
-  hamburger.addEventListener('click', function() {
-    navMenu.classList.toggle('show');
-    hamburger.classList.toggle('open');
-  });
-
-  // Optional: Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-      navMenu.classList.remove('show');
-      hamburger.classList.remove('open');
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
     }
-  });
-});
+  }
 </script>
-
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
+</script>
 </body>
 </html>
