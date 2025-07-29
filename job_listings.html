@@ -504,6 +504,7 @@
     });
   }
   document.addEventListener('DOMContentLoaded', function () {
+      filterJobs();
     const buttons = document.querySelectorAll('.job-btn');
     const jobSelect = document.getElementById('position');
     const clickSound = new Audio('https://www.myinstants.com/media/sounds/button-click.mp3');
@@ -526,7 +527,7 @@
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-      filterJobs();
+
     const form = document.querySelector('form');
     const name = document.getElementById('name');
     const email = document.getElementById('email');
