@@ -13,31 +13,7 @@
       margin: 0;
       color: #333;
     }
-    nav {
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .nav-menu {
-      display: flex;
-      gap: 50px;
-      align-items: center;
-    }
-    nav a {
-      color: #004080;
-      text-decoration: none;
-      font-weight: 500;
-    }
+   
     .btn {
       background-color: #0073e6;
       color: white;
@@ -111,54 +87,125 @@
       text-decoration: none;
       font-weight: bold;
     }
-  
-.hamburger {
+    </style>
+  <style>
+.hamburger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+    .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   width: 30px;
-  height: auto;
-  z-index: 1001;
+  height: 25px;
+  justify-content: center;
+  gap: 6px;
 }
 .hamburger span {
-  height: 3px;
-  background: #004080;
-  margin: 5px 0;
-  transition: all 0.3s ease;
+  display: block;
+  height: 4px;
+  background: #0073e6;
+  border-radius: 2px;
+  transition: all 0.3s;
 }
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
+
+/* Mobile Styles */
+@media (max-width: 800px) {
   .nav-menu {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    background: white;
-    padding: 10px 20px;
     position: absolute;
     top: 60px;
-    left: 0;
-    right: 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 999;
+    right: 5%;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    min-width: 180px;
+    z-index: 2000;
   }
   .nav-menu.show {
     display: flex;
   }
+  nav {
+    padding: 10px 20px;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .nav-menu a {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .nav-menu a:last-child {
+    border-bottom: none;
+  }
 }
+    nav {
+      background-color: #004080;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    
+  </style>
 
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
 </style>
+
+  
+
 </head>
+
 <body>
-<nav>
+
+<!--Navigation-->
+
+
+<nav role="navigation">
   <div class="nav-container">
-    <div class="hamburger" onclick="toggleMenu(this)">
+    <a href="index.html" style=" color: #fff;font-size: 1.6em; font-weight: bold;">Bluzen MHS</a>
+    <div class="hamburger" id="hamburgerMenu">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <a href="index.html" style="font-size: 1.6em; font-weight: bold;">Bluzen MHSA</a>
     <div class="nav-menu" id="navMenu">
       <a href="index.html">Home</a>
       <a href="services_page.html">Services</a>
@@ -166,7 +213,6 @@
       <a href="job_posting.html">Post a Job</a>
       <a href="about_page.html">About Us</a>
       <a href="contact_page.html">Contact Us</a>
-      <a class="btn" href="job_listings.html#job-listings">Apply Now</a>
     </div>
   </div>
 </nav>
