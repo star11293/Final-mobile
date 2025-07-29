@@ -547,31 +547,7 @@
     }
   });
 
-  // Validate required fields
-  const requiredFields = ['name', 'email', 'phone', 'position'];
-  for (let id of requiredFields) {
-    const field = document.getElementById(id);
-    if (!field.value.trim()) {
-      alert(`Please fill out the ${id.replace('-', ' ')} field.`);
-      field.focus();
-      return;
-    }
-  }
 
-  // Optionally send to server via fetch or Formspree integration here
-  // Example (uncomment and customize for backend):
-  // fetch('/submit-form', {
-  //   method: 'POST',
-  //   body: new FormData(this)
-  // })
-  // .then(response => response.json())
-  // .then(data => alert('Application submitted!'))
-  // .catch(err => alert('Submission failed.'));
-
-  // Show success confirmation
-  alert('Application submitted successfully!');
-  this.reset();
-  });
 </script>
 </body>
 
