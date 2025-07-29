@@ -126,59 +126,6 @@
     background: none;
   }
 }
-  .main-nav {
-    background-color: #004080 !important;
-  }
-  .nav-container a,
-  .nav-menu a {
-    color: #fff !important;
-  }
-  .nav-menu .btn {
-    background-color: #00c896;
-    color: #fff !important;
-  }
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    width: 30px;
-    z-index: 1001;
-  }
-  .hamburger span {
-    height: 3px;
-    background: #fff;
-    margin: 5px 0;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    display: block;
-  }
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    #navMenu {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: #004080;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    #navMenu.show {
-      display: flex;
-    }
-    #navMenu a, #navMenu .btn {
-      color: #fff !important;
-      background: none !important;
-      width: 100%;
-      text-align: left;
-    }
-  }
 </style>
 <style>
    @keyframes fadeInUp {
@@ -938,51 +885,9 @@ html, body {
     © 2025 Bluzen Medical Healthcare Staffing Agency. All rights reserved.
   </div>
 </footer>
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-      menu.classList.toggle("show");
-      btn.classList.toggle("open");
-    }
-  }
+
 </script>
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-      menu.classList.toggle('show');
-      btn.classList.toggle('open');
-    }
-  }
-</script>
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-      menu.classList.toggle('show');
-      btn.classList.toggle('open');
-    }
-  }
-</script>
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-      menu.classList.toggle("show");
-    }
-  }
-</script>
-   <!-- Navigation Script (Include before </body>) -->
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-      menu.classList.toggle("show");
-      btn.classList.toggle("open");
-    }
-  }
-</script>
+  
      <script>
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger-btn');
