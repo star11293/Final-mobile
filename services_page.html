@@ -406,39 +406,49 @@
 </div>
 </div>
 <script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-      menu.classList.toggle("show");
-      btn.classList.toggle("open");
+  const hamburger = document.getElementById('hamburgerMenu');
+  const navMenu = document.getElementById('navMenu');
+
+  // Helper function to set menu state based on screen size
+  function handleMenuDisplay() {
+    if (window.innerWidth <= 800) {
+      // Mobile: hide menu unless .show class is present
+      if (!navMenu.classList.contains('show')) {
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.style.display = 'flex';
+      }
+    } else {
+      // Desktop: always show menu, remove mobile classes
+      navMenu.style.display = 'flex';
+      navMenu.classList.remove('show');
+      hamburger.classList.remove('active');
     }
   }
-</script>
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-      menu.classList.toggle('show');
-      btn.classList.toggle('open');
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent document click from firing
+    navMenu.classList.toggle('show');
+    hamburger.classList.toggle('active');
+    handleMenuDisplay();
+  });
+
+  // Close the menu when clicking outside (only on mobile)
+  document.addEventListener('click', function(event) {
+    if (window.innerWidth <= 800) {
+      if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.remove('show');
+        hamburger.classList.remove('active');
+        handleMenuDisplay();
+      }
     }
-  }
-</script>
-<script>
-  function toggleMenu(btn) {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-      menu.classList.toggle('show');
-      btn.classList.toggle('open');
-    }
-  }
-</script>
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    if (menu) {
-      menu.classList.toggle("show");
-    }
-  }
+  });
+
+  // On resize, update menu state
+  window.addEventListener('resize', handleMenuDisplay);
+
+  // Initial setup
+  handleMenuDisplay();
 </script>
 </body>
 </html>
