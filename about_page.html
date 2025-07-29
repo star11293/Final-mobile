@@ -9,13 +9,6 @@
   </title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
-    nav a {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
-  color: #004080;
-  text-decoration: none;
-}
-  
 
 @media (max-width: 768px) {
   .btn {
@@ -265,54 +258,9 @@
     will-change: transform;
   }
   </style>
-<style>
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #004080;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-  }
-  .hamburger.open div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .hamburger.open div:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.open div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    .nav-menu {
-      flex-direction: column !important;
-      gap: 20px !important;
-      width: 100% !important;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-in-out;
-      background-color: white;
-      padding: 0;
-    }
-    .nav-menu.show {
-      max-height: 500px;
-      padding: 10px 0;
-    }
-    .nav-container a:first-child {
-      margin-bottom: 10px;
-      display: block;
-    }
     body {
       overflow-x: hidden;
     }
-  }
 </style>
 <style>
 @media (max-width: 768px) {
@@ -329,157 +277,9 @@
   }
 }
 </style>
+
+  
 <style>
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #004080;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-  }
-  .hamburger.open div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .hamburger.open div:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.open div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    #navMenu {
-      flex-direction: column !important;
-      gap: 20px !important;
-      width: 100% !important;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-in-out;
-      background-color: white;
-      padding: 0;
-    }
-    #navMenu.show {
-      max-height: 500px;
-      padding: 10px 0;
-    }
-  }
-</style>
-<style>
-  .hamburger {
-    width: 30px;
-    height: 25px;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  .hamburger span {
-    height: 3px;
-    background: #004080;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    #navMenu {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: white;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    #navMenu.show {
-      display: flex;
-    }
-  }
-</style>
-<style>
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    width: 30px;
-    height: auto;
-    z-index: 1001;
-  }
-  .hamburger span {
-    height: 3px;
-    background: #004080;
-    margin: 5px 0;
-    transition: all 0.3s ease;
-  }
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-    }
-    #navMenu {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      background: white;
-      padding: 10px 20px;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      z-index: 999;
-    }
-    #navMenu.show {
-      display: flex;
-    }
-  }
-</style>
-<style>
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px !important;
-    padding: 10px 20px !important;
-  }
-  .hamburger {
-    margin-left: auto;
-  }
-  .nav-menu {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    left: 0;
-    background-color: white;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 20px;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 999;
-  }
-  .nav-menu.show {
-    display: flex;
-  }
-  .nav-menu a {
-    color: #004080 !important;
-    padding: 10px 0;
-    width: 100%;
-  }
-}
-</style><style>
 @media (max-width: 768px) {
   a.btn {
     display: block !important;
@@ -488,30 +288,12 @@
     margin: 20px auto !important;
   }
 }
-</style></head>
+</style>
+  
+</head>
 <body>
 
-<nav class="main-nav" style="background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 5%; position: sticky; top: 0; z-index: 1000;">
-  <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; padding: 0 40px; gap: 100px;">
-    <a href="index.html" style="font-size: 1.6em; font-weight: bold; color: #004080; text-decoration: none; pointer-events: none;">
-      Bluzen MHSA
-    </a>
-    <div class="hamburger" onclick="toggleMenu(this)">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="nav-menu" id="navMenu" style="display: flex; gap: 50px; align-items: center;">
-      <a href="index.html" style="color: #004080; text-decoration: none; font-weight: 500;">Home</a>
-      <a href="services_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Services</a>
-      <a href="job_listings.html" style="color: #004080; text-decoration: none; font-weight: 500;">Jobs</a>
-      <a href="job_posting.html" style="color: #004080; text-decoration: none; font-weight: 500;">Post a Job</a>
-      <a href="about_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">About Us</a>
-      <a href="contact_page.html" style="color: #004080; text-decoration: none; font-weight: 500;">Contact Us</a>
-      <a class="btn" href="job_listings.html#job-listings" style="background-color: #0073e6; color: white; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: background-color 0.3s ease;">
-        Apply Now
-      </a>
-    </div>
-  </div>
-</nav>
+
 
 <header style="background: white; position: relative;">
 <div class="bubbles">
