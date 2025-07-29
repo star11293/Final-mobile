@@ -157,140 +157,7 @@
       animation: floatBubble linear infinite;
     }
   </style>
-   <style>
-  .hamburger.active span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-    .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  width: 30px;
-  height: 25px;
-  justify-content: center;
-  gap: 6px;
-}
-.hamburger span {
-  display: block;
-  height: 4px;
-  background: #0073e6;
-  border-radius: 2px;
-  transition: all 0.3s;
-}
 
-/* Mobile Styles */
-@media (max-width: 800px) {
-  .nav-menu {
-    position: absolute;
-    top: 60px;
-    right: 5%;
-    background: #fff;
-    flex-direction: column;
-    gap: 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-    border-radius: 8px;
-    overflow: hidden;
-    display: none;
-    min-width: 180px;
-    z-index: 2000;
-  }
-  .nav-menu.show {
-    display: flex;
-  }
-  nav {
-    padding: 10px 20px;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .nav-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-  .nav-menu a {
-    padding: 16px 20px;
-    border-bottom: 1px solid #eee;
-  }
-  .nav-menu a:last-child {
-    border-bottom: none;
-  }
-}
-    nav {
-      background-color: #004080;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .nav-menu {
-      display: flex;
-      gap: 50px;
-      align-items: center;
-    }
-    nav a {
-      color: #004080;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .btn {
-      background-color: #0073e6;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #005bb5;
-    }
-    .container {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
-      background: white;
-      border-radius: 10px;
-      padding: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    h1 {
-      color: #004080;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    h2 {
-      color: #0073e6;
-      margin-top: 30px;
-    }
-    footer {
-      background-color: #004080;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 80px;
-    }
-    footer a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
 <style>
 @media (max-width: 768px) {
   .main-header {
@@ -307,32 +174,11 @@
 }
 </style>
 
+
 </head>
 <body>
+<!--Navigation-->
 
-
-<!-- Navigation: Blue background, white links/buttons -->
-
-   <nav role="navigation">
-  <div class="nav-container">
-    <a href="index.html" style="font-size: 1.6em; font-weight: bold;">Bluzen MHS</a>
-    <div class="hamburger" id="hamburgerMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-menu" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="services_page.html">Services</a>
-      <a href="job_listings.html">Jobs</a>
-      <a href="job_posting.html">Post a Job</a>
-      <a href="about_page.html">About Us</a>
-      <a href="contact_page.html">Contact Us</a>
-    <a class="btn" href="job_listings.html#job-listings" style="background-color: #fff; color: #004080; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: background-color 0.3s; text-decoration:none;">
-        Apply Now
-    </div>
-  </div>
-</nav>
 
 <header>
 <h1>
@@ -442,49 +288,39 @@
 </div>
 </div>
 <script>
-  const hamburger = document.getElementById('hamburgerMenu');
-  const navMenu = document.getElementById('navMenu');
-
-  // Helper function to set menu state based on screen size
-  function handleMenuDisplay() {
-    if (window.innerWidth <= 800) {
-      // Mobile: hide menu unless .show class is present
-      if (!navMenu.classList.contains('show')) {
-        navMenu.style.display = 'none';
-      } else {
-        navMenu.style.display = 'flex';
-      }
-    } else {
-      // Desktop: always show menu, remove mobile classes
-      navMenu.style.display = 'flex';
-      navMenu.classList.remove('show');
-      hamburger.classList.remove('active');
+  function toggleMenu(btn) {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
     }
   }
-
-  hamburger.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent document click from firing
-    navMenu.classList.toggle('show');
-    hamburger.classList.toggle('active');
-    handleMenuDisplay();
-  });
-
-  // Close the menu when clicking outside (only on mobile)
-  document.addEventListener('click', function(event) {
-    if (window.innerWidth <= 800) {
-      if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-        navMenu.classList.remove('show');
-        hamburger.classList.remove('active');
-        handleMenuDisplay();
-      }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
     }
-  });
-
-  // On resize, update menu state
-  window.addEventListener('resize', handleMenuDisplay);
-
-  // Initial setup
-  handleMenuDisplay();
+  }
+</script>
+<script>
+  function toggleMenu(btn) {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+      menu.classList.toggle('show');
+      btn.classList.toggle('open');
+    }
+  }
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    if (menu) {
+      menu.classList.toggle("show");
+    }
+  }
 </script>
 </body>
 </html>
