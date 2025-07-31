@@ -733,9 +733,6 @@ text-align: center;
   
 <!-- Repeat same structure as Work 1 -->
 <label>Employer Name *</label><input type="text" name="work2_employer_name" required><br>
-  
-
-  
 <label>Address *</label><input type="text" name="work1_address1" placeholder="Address Line 1"><br>
 <input type="text" name="work1_address2" placeholder="Address Line 2"><br>
 <input type="text" name="work1_city" placeholder="City"><br>
@@ -796,7 +793,11 @@ text-align: center;
 <label>Please indicate all relevant experience, skills and work history that relate to the job description *</label>
 <textarea name="supporting_statement" rows="6" required></textarea><br>
 <label>Upload additional sheets if necessary:</label>
-<input type="file" name="supporting_files" multiple>
+ <div class="drop-zone">
+<span class="drop-zone__prompt">Drop file here or click to upload</span>
+<input type="file" name="myFile" class="drop-zone__input">
+</div>
+   <br><br>
 
 <!-- PART E: MEDICAL HISTORY -->
 <h2>Part E: Medical History</h2>
