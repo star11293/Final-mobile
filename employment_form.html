@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employment Application Form</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faff;
+      color: #333;
+      padding: 20px;
+    }
+    form {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      background: #004080;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .inline {
+      display: flex;
+      gap: 15px;
+    }
+    .inline input {
+      width: 100%;
+    }
+    .submit-btn {
+      margin-top: 30px;
+      background: #004080;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background: #003366;
+    }
+
+
+
+
+
+
+
+    .form-section {
+  margin-top: 2em;
+}
+.form-group {
+  margin-bottom: 1em;
+}
+.form-row {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+.form-row .form-group {
+  flex: 1;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}
+
+  </style>
+</head>
+<body>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <h2>Basic Info</h2>
+    <label>Date <input type="date" name="date"></label>
+    <label>Time <input type="time" name="time"></label>
+    <label>Social Security Number <input type="text" name="ssn"></label>
+    <div class="inline">
+      <label>First Name <input type="text" name="first_name"></label>
+      <label>Last Name <input type="text" name="last_name"></label>
+    </div>
+    <label>Home Phone <input type="tel" name="home_phone"></label>
+    <label>Mobile <input type="tel" name="mobile"></label>
+    <label>Email <input type="email" name="email"></label>
+    <label>Address <input type="text" name="address"></label>
+    <div class="inline">
+      <label>City <input type="text" name="city"></label>
+      <label>State <input type="text" name="state"></label>
+      <label>Zip Code <input type="text" name="zip"></label>
+    </div>
+    <label>Position Applied For <input type="text" name="position_applied"></label>
+
+    <h2>Attached Documents</h2>
+    <label><input type="checkbox" name="attached[]" value="application"> Completed Employment Application</label>
+    <label><input type="checkbox" name="attached[]" value="license"> Professional License</label>
+    <label><input type="checkbox" name="attached[]" value="cpr"> CPR/First Aid</label>
+    <label><input type="checkbox" name="attached[]" value="i9"> Form I-9</label>
+    <label><input type="checkbox" name="attached[]" value="employment_references"> Two Employment References</label>
+    <label><input type="checkbox" name="attached[]" value="personal_reference"> One Personal Reference</label>
+    <label><input type="checkbox" name="attached[]" value="license_id"> Driver's License/ID</label>
+    <label><input type="checkbox" name="attached[]" value="ss_card"> Social Security Card</label>
+    <label><input type="checkbox" name="attached[]" value="experience"> 1 Year Experience</label>
+    <label><input type="checkbox" name="attached[]" value="background_check"> Background Check</label>
+    <label><input type="checkbox" name="attached[]" value="other"> Other Information</label>
+    <label>Attach Documents <input type="file" name="documents[]" multiple></label>
+    <label>If missing documents, when will they be available? <textarea name="missing_docs_note"></textarea></label>
+
+    <!-- Additional sections (Personal Info, Availability, Education, etc.) will follow here -->
+
+    <button class="submit-btn" type="submit">Submit</button>
+  </form>
+
+
+
+
+
+
+  
+  <!-- PART A: PERSONAL INFORMATION -->
+<div class="form-section">
+  <div class="form-group">
+    <label for="title">Title *</label>
+    <select id="title" name="title" required>
+      <option value="">Select</option>
+      <option>Mr.</option>
+      <option>Miss</option>
+      <option>Mrs.</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="firstName">First Name *</label>
+      <input type="text" id="firstName" name="first_name" required>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name *</label>
+      <input type="text" id="lastName" name="last_name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="homeAddress1">Home Address *</label>
+    <input type="text" id="homeAddress1" name="home_address_line1" placeholder="Address Line 1" required>
+    <input type="text" name="home_address_line2" placeholder="Address Line 2">
+    <input type="text" name="home_city" placeholder="City">
+    <select name="home_state">
+      <option>Alabama</option>
+      <!-- Add other states if needed -->
+    </select>
+    <input type="text" name="home_zip" placeholder="Zip Code">
+  </div>
+
+  <div class="form-group">
+    <label for="correspondenceAddress1">Correspondence Address (If different)</label>
+    <input type="text" id="correspondenceAddress1" name="corr_address_line1" placeholder="Address Line 1">
+    <input type="text" name="corr_address_line2" placeholder="Address Line 2">
+    <input type="text" name="corr_city" placeholder="City">
+    <select name="corr_state">
+      <option>Alabama</option>
+      <!-- Add other states if needed -->
+    </select>
+    <input type="text" name="corr_zip" placeholder="Zip Code">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="homePhone">Home Telephone *</label>
+      <input type="tel" id="homePhone" name="home_phone" required placeholder="(201) 555-0123">
+    </div>
+    <div class="form-group">
+      <label for="workPhone">Work Telephone *</label>
+      <input type="tel" id="workPhone" name="work_phone" required placeholder="(201) 555-0123">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dob">Date of Birth *</label>
+    <input type="date" id="dob" name="dob" required>
+  </div>
+
+  <div class="form-group">
+    <label>May we contact you at work? *</label>
+    <label><input type="radio" name="contact_at_work" value="Yes" required> Yes</label>
+    <label><input type="radio" name="contact_at_work" value="No"> No</label>
+  </div>
+
+  <div class="form-group">
+    <label>Are you a citizen of the United States? *</label>
+    <label><input type="radio" name="us_citizen" value="Yes" required> Yes</label>
+    <label><input type="radio" name="us_citizen" value="No"> No</label>
+  </div>
+
+  <div class="form-group">
+    <label>If no, are you eligible to work in the United States? *</label>
+    <label><input type="radio" name="work_eligibility" value="Yes" required> Yes</label>
+    <label><input type="radio" name="work_eligibility" value="No"> No</label>
+  </div>
+
+  <div class="form-group">
+    <label>If you are under age 18, do you have an employment/age certificate? *</label>
+    <label><input type="radio" name="minor_certificate" value="Yes" required> Yes</label>
+    <label><input type="radio" name="minor_certificate" value="No"> No</label>
+  </div>
+
+  <div class="form-group">
+    <label>Have you ever been convicted of a misdemeanor or felony? *</label>
+    <label><input type="radio" name="conviction" value="Yes" required> Yes</label>
+    <label><input type="radio" name="conviction" value="No"> No</label>
+  </div>
+
+  <div class="form-group">
+    <label for="convictionDetails">If yes, please explain the circumstances of the conviction:</label>
+    <textarea id="convictionDetails" name="conviction_details" rows="3"></textarea>
+  </div>
+</div>
+
+<!-- AVAILABLE HOURS -->
+<div class="form-section">
+  <h3>Available Hours (in HH:MM format)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Start Time *</th>
+        <th>Finish Time *</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monday</td>
+        <td><input type="time" name="monday_start" required></td>
+        <td><input type="time" name="monday_end" required></td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td><input type="time" name="tuesday_start" required></td>
+        <td><input type="time" name="tuesday_end" required></td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td><input type="time" name="wednesday_start" required></td>
+        <td><input type="time" name="wednesday_end" required></td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td><input type="time" name="thursday_start" required></td>
+        <td><input type="time" name="thursday_end" required></td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td><input type="time" name="friday_start" required></td>
+        <td><input type="time" name="friday_end" required></td>
+      </tr>
+      <tr>
+        <td>Saturday</td>
+        <td><input type="time" name="saturday_start" required></td>
+        <td><input type="time" name="saturday_end" required></td>
+      </tr>
+      <tr>
+        <td>Sunday</td>
+        <td><input type="time" name="sunday_start" required></td>
+        <td><input type="time" name="sunday_end" required></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+  <!-- PART B: EDUCATION AND TRAINING -->
+<h2>Part B: Education and Training</h2>
+<h3>1. High School</h3>
+<label>High School Name *</label><input type="text" name="highschool1_name" required><br>
+<label>Address *</label><input type="text" name="highschool1_address1" required placeholder="Address Line 1"><br>
+<input type="text" name="highschool1_address2" placeholder="Address Line 2"><br>
+<input type="text" name="highschool1_city" placeholder="City"><br>
+<select name="highschool1_state">
+  <option>Alabama</option>
+</select>
+<input type="text" name="highschool1_zip" placeholder="Zip Code"><br>
+<label>Start Date *</label><input type="date" name="highschool1_start" required>
+<label>End Date *</label><input type="date" name="highschool1_end" required><br>
+<label>Diploma Received? *</label>
+<select name="highschool1_diploma" required>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select><br>
+<label>Area of Study *</label><input type="text" name="highschool1_study" required><br>
+
+<h3>2. High School</h3>
+<label>High School Name *</label><input type="text" name="highschool2_name" required><br>
+<label>Address *</label><input type="text" name="highschool2_address1" required placeholder="Address Line 1"><br>
+<input type="text" name="highschool2_address2" placeholder="Address Line 2"><br>
+<input type="text" name="highschool2_city" placeholder="City"><br>
+<select name="highschool2_state">
+  <option>Alabama</option>
+</select>
+<input type="text" name="highschool2_zip" placeholder="Zip Code"><br>
+<label>Start Date *</label><input type="date" name="highschool2_start" required>
+<label>End Date *</label><input type="date" name="highschool2_end" required><br>
+<label>Diploma Received? *</label>
+<select name="highschool2_diploma" required>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select><br>
+<label>Professional trainings/qualifications with dates and levels obtained:</label>
+<textarea name="professional_training" rows="4" cols="50"></textarea>
+
+<!-- PART C: PRESENT AND PAST WORK HISTORY -->
+<h2>Part C: Present and Past Work History</h2>
+<h3>Present or Most Recent Employer</h3>
+<label>Employer Name *</label><input type="text" name="present_employer_name" required><br>
+<label>Address *</label><input type="text" name="present_employer_address1" placeholder="Address Line 1"><br>
+<input type="text" name="present_employer_address2" placeholder="Address Line 2"><br>
+<input type="text" name="present_employer_city" placeholder="City"><br>
+<select name="present_employer_state">
+  <option>Alabama</option>
+</select>
+<input type="text" name="present_employer_zip" placeholder="Zip Code"><br>
+<label>Start Date *</label><input type="date" name="present_start" required>
+<label>End Date *</label><input type="date" name="present_end" required><br>
+<label>Position Held and Duties *</label><textarea name="present_duties" required></textarea><br>
+<label>Reason for Leaving *</label><input type="text" name="present_reason" required><br>
+<label>Starting Salary *</label><input type="text" name="present_salary_start" required>
+<label>Ending Salary *</label><input type="text" name="present_salary_end" required><br>
+<label>May we contact this employer? *</label>
+<select name="present_contact">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select><br>
+<label>If no, please indicate reason *</label><input type="text" name="present_no_reason"><br>
+
+<h3>1. Work History</h3>
+<label>Employer Name *</label><input type="text" name="work1_employer_name" required><br>
+<label>Address *</label><input type="text" name="work1_address1" placeholder="Address Line 1"><br>
+<input type="text" name="work1_address2" placeholder="Address Line 2"><br>
+<input type="text" name="work1_city" placeholder="City"><br>
+<select name="work1_state"><option>Alabama</option></select>
+<input type="text" name="work1_zip"><br>
+<label>Start Date *</label><input type="date" name="work1_start" required>
+<label>End Date *</label><input type="date" name="work1_end" required><br>
+<label>Position Held and Duties *</label><textarea name="work1_duties" required></textarea><br>
+<label>Reason for Leaving *</label><input type="text" name="work1_reason" required><br>
+<label>Starting Salary *</label><input type="text" name="work1_salary_start" required>
+<label>Ending Salary *</label><input type="text" name="work1_salary_end" required><br>
+<label>May we contact this employer? *</label>
+<select name="work1_contact"><option>Yes</option><option>No</option></select><br>
+<label>If no, please indicate reason *</label><input type="text" name="work1_no_reason"><br>
+
+<h3>2. Work History</h3>
+<!-- Repeat same structure as Work 1 -->
+<label>Employer Name *</label><input type="text" name="work2_employer_name" required><br>
+... (same as above)
+
+<!-- PART D: SUPPORTING STATEMENT -->
+<h2>Part D: Supporting Statement</h2>
+<label>Please indicate all relevant experience, skills and work history that relate to the job description *</label>
+<textarea name="supporting_statement" rows="6" required></textarea><br>
+<label>Upload additional sheets if necessary:</label>
+<input type="file" name="supporting_files" multiple>
+
+<!-- PART E: MEDICAL HISTORY -->
+<h2>Part E: Medical History</h2>
+<label>What absences due to illness have you had in the last two years? *</label>
+<input type="text" name="illness_absences" required><br>
+<label>Do you have any illness that would prevent you from performing the job duties? *</label>
+<select name="medical_limitation">
+  <option value="No">No</option>
+  <option value="Yes">Yes</option>
+</select><br>
+<label>If yes, please indicate</label><input type="text" name="medical_explanation"><br>
+<label>Can you lift 70 pounds? *</label>
+<select name="lift_capability" required>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+<!-- PART F: REFERENCES -->
+<h2>Part F: References</h2>
+<h3>Reference 1</h3>
+<input type="text" name="ref1_first" placeholder="First Name" required>
+<input type="text" name="ref1_last" placeholder="Last Name" required><br>
+<input type="text" name="ref1_relationship" placeholder="Relationship" required>
+<input type="text" name="ref1_years" placeholder="Years of Affiliation" required>
+<input type="tel" name="ref1_phone" placeholder="(201) 555-0123" required><br>
+<!-- Repeat for Reference 2 and 3 -->
+
+<!-- PART G: DECLARATION -->
+<h2>Part G: Declaration</h2>
+<p>By signing below, I,</p>
+<input type="text" name="decl_first" placeholder="First Name" required>
+<input type="text" name="decl_last" placeholder="Last Name" required>
+<p>on the date of</p>
+<input type="date" name="decl_date" required><br>
+<p>certify all info is accurate to the best of my knowledge...</p>
+<label>Name *</label>
+<input type="text" name="confirm_first" placeholder="First Name" required>
+<input type="text" name="confirm_last" placeholder="Last Name" required>
+<label>Date / Time *</label>
+<input type="datetime-local" name="confirm_datetime" required><br>
+
+<!-- CONFIDENTIAL AGREEMENT, SIGNATURES -->
+<h3>Confidential Agreement</h3>
+<p>I agree... [Insert full paragraph]</p>
+<label>Signature *</label><input type="text" name="signature_confidential" required>
+<label>Date *</label><input type="date" name="date_confidential" required>
+
+<h3>Conflict of Interest</h3>
+<p>I acknowledge... [Insert full paragraph]</p>
+<label>Signature *</label><input type="text" name="signature_conflict" required>
+<label>Date *</label><input type="date" name="date_conflict" required>
+
+<h3>Release of Information</h3>
+<p>I hereby authorize... [Insert full paragraph]</p>
+<input type="text" name="release_name_first" placeholder="First Name" required>
+<input type="text" name="release_name_last" placeholder="Last Name" required>
+<label>Social Security Number *</label>
+<input type="text" name="release_ssn" required>
+<label>Signature *</label><input type="text" name="release_signature" required>
+<label>Date *</label><input type="date" name="release_date" required>
+
+<!-- SUBMIT BUTTON -->
+<br><br>
+<button type="submit">Submit</button>
+
+</body>
+</html>
+
