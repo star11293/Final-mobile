@@ -67,8 +67,6 @@
 
 
 
-
-
     .form-section {
   margin-top: 2em;
 }
@@ -91,6 +89,56 @@ table {
 table th, table td {
   border: 1px solid #ccc;
   padding: 0.5em;
+}
+
+/* Drag And Drop File Uploader Styling*/
+    
+    drop-zone {
+max-width: 200px;
+height: 200px;
+padding: 25px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+font-family: "Quicksand", sans-serif;
+font-weight: 500;
+font-size: 20px;
+cursor: pointer;
+color: #cccccc;
+border: 4px dashed #009578;
+border-radius: 10px;
+}
+
+drop-zone--over {
+border-style: solid;
+}
+
+drop-zone__input {
+display: none;
+}
+
+drop-zone__thumb {
+width: 100%;
+height: 100%;
+border-radius: 10px;
+overflow: hidden;
+background-color: #cccccc;
+background-size: cover;
+position: relative;
+}
+
+drop-zone__thumb::after {
+content: attr(data-label);
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+padding: 5px 0;
+color: #ffffff;
+background: rgba(0, 0, 0, 0.75);
+font-size: 14px;
+text-align: center;
 }
 
   </style>
@@ -129,7 +177,15 @@ table th, table td {
     <label><input type="checkbox" name="attached[]" value="experience">One year of experience working in the field</label>
     <label><input type="checkbox" name="attached[]" value="background_check">Background Check (a must)</label>
     <label><input type="checkbox" name="attached[]" value="other">Any other information you have for employment</label>
-    <label>Attach Documents <input type="file" name="documents[]" multiple></label>
+
+    <!--Drag And Drop Files Uploader-->
+    
+   <div class="drop-zone">
+<span class="drop-zone__prompt">Drop file here or click to upload</span>
+<input type="file" name="myFile" class="drop-zone__input">
+</div>
+
+    
     <label>If missing documents, when will they be available? <textarea name="missing_docs_note"></textarea></label>
 
     <!-- Additional sections (Personal Info, Availability, Education, etc.) will follow here -->
@@ -823,6 +879,70 @@ I acknowledge that I have read the company policy statement concerning conflict 
 <br><br><br>
   <button class="submit-btn" type="submit">Submit</button>
       </form>
+  <script>
+    document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+const dropZoneElement = inputElement.closest(".drop-zone");
+
+dropZoneElement.addEventListener("click", (e) => {
+inputElement.click();
+});
+
+inputElement.addEventListener("change", (e) => {
+if (inputElement.files.length) {
+updateThumbnail(dropZoneElement, inputElement.files[0]);
+}
+});
+
+dropZoneElement.addEventListener("dragover", (e) => {
+e.preventDefault();
+dropZoneElement.classList.add("drop-zone--over");
+});
+
+["dragleave", "dragend"].forEach((type) => {
+dropZoneElement.addEventListener(type, (e) => {
+dropZoneElement.classList.remove("drop-zone--over");
+});
+});
+
+dropZoneElement.addEventListener("drop", (e) => {
+e.preventDefault();
+
+if (e.dataTransfer.files.length) {
+inputElement.files = e.dataTransfer.files;
+updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+}
+
+dropZoneElement.classList.remove("drop-zone--over");
+});
+});
+
+function updateThumbnail(dropZoneElement, file) {
+let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+dropZoneElement.querySelector(".drop-zone__prompt").remove();
+}
+
+if (!thumbnailElement) {
+thumbnailElement = document.createElement("div");
+thumbnailElement.classList.add("drop-zone__thumb");
+dropZoneElement.appendChild(thumbnailElement);
+}
+
+thumbnailElement.dataset.label = file.name;
+
+if (file.type.startsWith("image/")) {
+const reader = new FileReader();
+
+reader.readAsDataURL(file);
+reader.onload = () => {
+thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+};
+} else {
+thumbnailElement.style.backgroundImage = null;
+}
+}
+  </script>
 
 </body>
 </html>
