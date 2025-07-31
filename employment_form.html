@@ -96,7 +96,7 @@ table th, table td {
   </style>
 </head>
 <body>
-  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <form action="https://formspree.io/f/xovlvekv" method="POST">
     <h2>Basic Info</h2>
     <label>Date <input type="date" name="date"></label>
     <label>Time <input type="time" name="time"></label>
@@ -117,17 +117,18 @@ table th, table td {
     <label>Position Applied For <input type="text" name="position_applied"></label>
 
     <h2>Attached Documents</h2>
+   
     <label><input type="checkbox" name="attached[]" value="application"> Completed Employment Application</label>
-    <label><input type="checkbox" name="attached[]" value="license"> Professional License</label>
-    <label><input type="checkbox" name="attached[]" value="cpr"> CPR/First Aid</label>
-    <label><input type="checkbox" name="attached[]" value="i9"> Form I-9</label>
-    <label><input type="checkbox" name="attached[]" value="employment_references"> Two Employment References</label>
-    <label><input type="checkbox" name="attached[]" value="personal_reference"> One Personal Reference</label>
-    <label><input type="checkbox" name="attached[]" value="license_id"> Driver's License/ID</label>
-    <label><input type="checkbox" name="attached[]" value="ss_card"> Social Security Card</label>
-    <label><input type="checkbox" name="attached[]" value="experience"> 1 Year Experience</label>
-    <label><input type="checkbox" name="attached[]" value="background_check"> Background Check</label>
-    <label><input type="checkbox" name="attached[]" value="other"> Other Information</label>
+    <label><input type="checkbox" name="attached[]" value="license">Current Professional License (Signed), if any</label>
+    <label><input type="checkbox" name="attached[]" value="cpr"> Current CPR card/First Aid (Signed)</label>
+    <label><input type="checkbox" name="attached[]" value="i9">Employment Eligibility Verification (Form I-9)</label>
+    <label><input type="checkbox" name="attached[]" value="employment_references"> Two Employment References forms or letter (phone # included)</label>
+    <label><input type="checkbox" name="attached[]" value="personal_reference">One personal reference form or letter (phone # included)</label>
+    <label><input type="checkbox" name="attached[]" value="license_id">Driver’s License/ State Issue ID card (Signed)</label>
+    <label><input type="checkbox" name="attached[]" value="ss_card"> Copy of Social Security Card (Bring original signed copy to interview)</label>
+    <label><input type="checkbox" name="attached[]" value="experience">One year of experience working in the field</label>
+    <label><input type="checkbox" name="attached[]" value="background_check">Background Check (a must)</label>
+    <label><input type="checkbox" name="attached[]" value="other">Any other information you have for employment</label>
     <label>Attach Documents <input type="file" name="documents[]" multiple></label>
     <label>If missing documents, when will they be available? <textarea name="missing_docs_note"></textarea></label>
 
@@ -442,6 +443,45 @@ table th, table td {
 <input type="text" name="highschool2_city" placeholder="City"><br>
 <select name="highschool2_state">
   <option>Alabama</option>
+  <option>Alaska</option>
+<option>Arkansas</option>
+<option>Arizona</option>
+<option>California</option>
+<option>Colorado</option>
+<option>Connecticut</option>
+<option>Delaware</option>
+<option >District of Columbia</option>
+<option>Florida</option>
+<option>Georgia</option>
+<option>Hawaii</option>
+<option>Idaho</option>
+<option>Illinois</option>
+<option>Indiana</option>
+<option>Iowa</option>
+<option>Kansas</option>
+<option>Kentucky</option>
+<option>Louisiana</option>
+<option>Maine</option>
+<option">Maryland</option>
+<option">Massachusetts</option>
+<option>Michigan</option>
+<option>Minnesota</option>
+<option>Mississippi</option>
+<option>Montana</option>
+<option>Nebraska</option>
+<option>Nevada</option>
+<option>New York</option>
+<option>New Jersey</option>
+<option>New Mexico</option>
+<option>New York</option>
+<option>Northern Mariana Islands</option>
+<option>Nevada</option>
+<option>Ohio</option>
+<option>Oklahoma</option>
+<option>Oregon</option>
+<option>Pennsylvania</option>
+<option>Rhode Island</option>
+<option>South Carolina
 </select>
 <input type="text" name="highschool2_zip" placeholder="Zip Code"><br>
 <label>Start Date *</label><input type="date" name="highschool2_start" required>
@@ -462,7 +502,46 @@ table th, table td {
 <input type="text" name="present_employer_address2" placeholder="Address Line 2"><br>
 <input type="text" name="present_employer_city" placeholder="City"><br>
 <select name="present_employer_state">
-  <option>Alabama</option>
+ <option>Alabama</option>
+  <option>Alaska</option>
+<option>Arkansas</option>
+<option>Arizona</option>
+<option>California</option>
+<option>Colorado</option>
+<option>Connecticut</option>
+<option>Delaware</option>
+<option >District of Columbia</option>
+<option>Florida</option>
+<option>Georgia</option>
+<option>Hawaii</option>
+<option>Idaho</option>
+<option>Illinois</option>
+<option>Indiana</option>
+<option>Iowa</option>
+<option>Kansas</option>
+<option>Kentucky</option>
+<option>Louisiana</option>
+<option>Maine</option>
+<option">Maryland</option>
+<option">Massachusetts</option>
+<option>Michigan</option>
+<option>Minnesota</option>
+<option>Mississippi</option>
+<option>Montana</option>
+<option>Nebraska</option>
+<option>Nevada</option>
+<option>New York</option>
+<option>New Jersey</option>
+<option>New Mexico</option>
+<option>New York</option>
+<option>Northern Mariana Islands</option>
+<option>Nevada</option>
+<option>Ohio</option>
+<option>Oklahoma</option>
+<option>Oregon</option>
+<option>Pennsylvania</option>
+<option>Rhode Island</option>
+<option>South Carolina
 </select>
 <input type="text" name="present_employer_zip" placeholder="Zip Code"><br>
 <label>Start Date *</label><input type="date" name="present_start" required>
@@ -532,7 +611,6 @@ table th, table td {
 <label>May we contact this employer? *</label>
 <select name="work1_contact"><option>Yes</option><option>No</option></select><br>
 <label>If no, please indicate reason *</label><input type="text" name="work1_no_reason"><br>
-... (same as above)
 
 <!-- PART D: SUPPORTING STATEMENT -->
 <h2>Part D: Supporting Statement</h2>
@@ -543,15 +621,15 @@ table th, table td {
 
 <!-- PART E: MEDICAL HISTORY -->
 <h2>Part E: Medical History</h2>
-<label>What absences due to illness have you had in the last two years? *</label>
+<label>What absences due to illness have you had from work for the last two years? *</label>
 <input type="text" name="illness_absences" required><br>
-<label>Do you have any illness that would prevent you from performing the job duties? *</label>
+<label>Do you have any illness that will present you from performing the duties of the position of which you have applied? *</label>
 <select name="medical_limitation">
   <option value="No">No</option>
   <option value="Yes">Yes</option>
 </select><br>
 <label>If yes, please indicate</label><input type="text" name="medical_explanation"><br>
-<label>Can you lift 70 pounds? *</label>
+<label>Can you lift seventy (70)pounds? *</label>
 <select name="lift_capability" required>
   <option value="Yes">Yes</option>
   <option value="No">No</option>
