@@ -130,17 +130,34 @@
     <div class="calendar-header">Available Dates - August 2025</div>
     <div class="calendar" id="calendar"></div>
   </div>
-  <script>
-    // Example: Available class dates
-    const availableDates = [4, 7, 10, 15, 18, 22, 25, 29];
+ <script>
+  // State for current month/year
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth(); // 0-indexed
 
-    // Calendar for August 2025 (adjust as needed)
-    const year = 2025;
-    const month = 7; // August (0-indexed)
-    const today = new Date();
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const calendar = document.getElementById('calendar');
+  const calendarHeader = document.querySelector('.calendar-header');
 
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const calendar = document.getElementById('calendar');
+  // Add navigation buttons to header
+  calendarHeader.innerHTML = `
+    <button id="prev-month" style="margin-right:10px;">&#8592;</button>
+    <span id="month-year-label"></span>
+    <button id="next-month" style="margin-left:10px;">&#8594;</button>
+  `;
+
+  // Update header label
+  function updateHeader() {
+    const label = document.getElementById('month-year-label');
+    const displayMonth = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
+    label.innerText = `Available Dates - ${displayMonth}`;
+  }
+
+  // Build the calendar for current month and year
+  function buildCalendar() {
+    // Clear previous calendar days
+    calendar.innerHTML = '';
 
     // Add day headers
     daysOfWeek.forEach(day => {
@@ -150,9 +167,18 @@
       calendar.appendChild(div);
     });
 
+    // Find all Mondays and Thursdays for this month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const availableDates = [];
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dayOfWeek = new Date(year, month, d).getDay();
+      if (dayOfWeek === 1 || dayOfWeek === 4) { // Monday=1, Thursday=4
+        availableDates.push(d);
+      }
+    }
+
     // First day of the month
     const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month+1, 0).getDate();
 
     // Fill in blank days before first
     for (let i = 0; i < firstDay; i++) {
@@ -166,24 +192,68 @@
       const div = document.createElement('div');
       div.className = 'calendar-date';
 
-      // Highlight today
+      // Highlight today if in current month/year
       if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
         div.classList.add('today');
       }
 
-      // Mark available class dates
+      // Mark available Mondays and Thursdays
       if (availableDates.includes(d)) {
         div.classList.add('available');
         const a = document.createElement('a');
-        a.href = ""; // Link to class registration/details page (currently empty)
+        a.href = "#registration-container";
         a.innerText = d;
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          const dateString = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
+          document.getElementById('registration-container').style.display = '';
+          document.getElementById('reg-date').value = dateString;
+          setTimeout(() => {
+            document.getElementById('registration-container').scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        });
         div.appendChild(a);
       } else {
         div.innerText = d;
       }
       calendar.appendChild(div);
     }
-  </script>
+  }
+
+  // Navigation functions
+  document.getElementById('prev-month').onclick = function() {
+    month -= 1;
+    if (month < 0) {
+      month = 11;
+      year -= 1;
+    }
+    updateHeader();
+    buildCalendar();
+  };
+  document.getElementById('next-month').onclick = function() {
+    month += 1;
+    if (month > 11) {
+      month = 0;
+      year += 1;
+    }
+    updateHeader();
+    buildCalendar();
+  };
+
+  // Initial render
+  updateHeader();
+  buildCalendar();
+
+  // Registration form logic (unchanged)
+  document.getElementById('registration-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('success-message').style.display = 'block';
+    setTimeout(()=>{ document.getElementById('success-message').style.display='none'; }, 2500);
+    this.reg_name.value = '';
+    this.reg_email.value = '';
+    this.reg_time.selectedIndex = 0;
+  });
+</script>
   <!-- Registration Form Section -->
 <div class="registration-container" id="registration-container" style="display:none;">
   <h2 class="registration-header">Register for a Date & Time Slot</h2>
