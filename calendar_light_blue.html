@@ -184,5 +184,150 @@
       calendar.appendChild(div);
     }
   </script>
+  <!-- Registration Form Section -->
+<div class="registration-container" id="registration-container" style="display:none;">
+  <h2 class="registration-header">Register for a Date & Time Slot</h2>
+  <form class="registration-form" id="registration-form">
+    <label for="reg-date">Date:</label>
+    <input type="text" id="reg-date" name="date" readonly>
+
+    <label for="reg-time">Time:</label>
+    <select id="reg-time" name="time" required>
+      <option value="4:00pm">4:00pm - 5:00pm</option>
+      <option value="5:00pm">5:00pm - 6:00pm</option>
+      <option value="6:00pm">6:00pm - 7:00pm</option>
+      <option value="7:00pm">7:00pm - 8:00pm</option>
+    </select>
+
+    <label for="reg-name">Your Name:</label>
+    <input type="text" id="reg-name" name="name" required placeholder="Enter your name">
+
+    <label for="reg-email">Email:</label>
+    <input type="email" id="reg-email" name="email" required placeholder="Enter your email">
+
+    <button type="submit">Register</button>
+    <div class="success-message" id="success-message" style="display:none;">Registration submitted!</div>
+  </form>
+</div>
+
+<style>
+  .registration-container {
+    max-width: 500px;
+    margin: 40px auto 20px auto;
+    background: #f8fcff;
+    box-shadow: 0 8px 32px rgba(33,150,243,0.13);
+    border-radius: 24px;
+    padding: 32px 20px 20px 20px;
+    animation: popin 1s cubic-bezier(.68,-0.55,.27,1.55);
+  }
+  .registration-header {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #1976d2;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .registration-form label {
+    font-weight: 600;
+    color: #0288d1;
+    margin-bottom: 3px;
+  }
+  .registration-form input, .registration-form select {
+    padding: 10px 8px;
+    border: 1.5px solid #b3e5fc;
+    border-radius: 8px;
+    font-size: 1em;
+    background: #e1f5fe;
+    color: #1976d2;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .registration-form input:focus, .registration-form select:focus {
+    border: 1.5px solid #64b5f6;
+    background: #f3f9ff;
+  }
+  .registration-form button {
+    margin-top: 8px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #64b5f6 0%, #90caf9 100%);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.11);
+  }
+  .registration-form button:hover {
+    background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
+    transform: scale(1.05);
+  }
+  .success-message {
+    color: #2196f3;
+    font-weight: 600;
+    margin-top: 12px;
+    text-align: center;
+  }
+  @media (max-width: 700px) {
+    .registration-container {
+      padding: 15px 3px 12px 3px;
+      max-width: 97vw;
+    }
+    .registration-header {
+      font-size: 1.15em;
+    }
+    .registration-form input, .registration-form select {
+      font-size: 0.97em;
+    }
+    .registration-form button {
+      font-size: 1em;
+    }
+  }
+</style>
+
+<script>
+  // Find all available date links and add registration link + click event
+  document.querySelectorAll('.calendar-date.available a').forEach(function(a) {
+    a.href = "#registration-container";
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Get the day from the cell
+      const day = parseInt(a.innerText, 10);
+      // Get the month and year from the current calendar script
+      const year = 2025, month = 7; // August 2025, JS month is 0-indexed
+      const dateString = `${year}-${(month+1).toString().padStart(2,'0')}-${day.toString().padStart(2,'0')}`;
+
+      // Show registration form and fill the date
+      document.getElementById('registration-container').style.display = '';
+      document.getElementById('reg-date').value = dateString;
+
+      // Scroll to form (for mobile)
+      setTimeout(() => {
+        document.getElementById('registration-container').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    });
+  });
+
+  // Handle registration form submission
+  document.getElementById('registration-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Your form handling logic here (AJAX, etc). For demo, just show message.
+    document.getElementById('success-message').style.display = 'block';
+    setTimeout(()=>{ document.getElementById('success-message').style.display='none'; }, 2500);
+
+    // Optionally reset fields except the date
+    this.reg_name.value = '';
+    this.reg_email.value = '';
+    this.reg_time.selectedIndex = 0;
+  });
+</script>
 </body>
 </html>
