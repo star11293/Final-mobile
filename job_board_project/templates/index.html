@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Bluzen MHS{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Empowering the Healthcare Workforce</h1>
+    <p>Connecting hospitals and medical professionals through a vibrant, modern job board.</p>
+    <div class="hero-buttons">
+        <a href="{{ url_for('jobs') }}" class="btn-primary">Explore Jobs</a>
+        {% if current_user.is_authenticated and current_user.role == 'employer' %}
+        <a href="{{ url_for('post_job') }}" class="btn-secondary">Post a Job</a>
+        {% endif %}
+    </div>
+</section>
+<section>
+    <h2>Why Choose Bluzen?</h2>
+    <p>We make it easy for hospitals and healthcare workers to find each other.  Employers can create accounts to post roles and track applications, while job seekers can search jobs, save alerts and apply in a few clicks.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Alerts - Bluzen MHS{% endblock %}
+
+{% block content %}
+<h2>Job Alerts</h2>
+<p>Create a job alert to receive email notifications when new jobs match your criteria.</p>
+
+<form method="post">
+    <div class="form-group">
+        <label for="keywords">Keywords</label>
+        <input type="text" id="keywords" name="keywords" placeholder="e.g. nurse, technician">
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="e.g. Maryland">
+    </div>
+    <div class="form-group">
+        <label for="job_type">Job Type</label>
+        <select id="job_type" name="job_type">
+            <option value="">Any</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Per Diem">Per Diem</option>
+            <option value="Travel">Travel</option>
+            <option value="Contract">Contract</option>
+        </select>
+    </div>
+    <button type="submit">Create Alert</button>
+</form>
+
+<h3>Your Alerts</h3>
+<div class="alert-list">
+    {% for alert in alerts %}
+    <div class="alert-item">
+        <span><strong>Keywords:</strong> {{ alert.keywords or 'Any' }} | <strong>Location:</strong> {{ alert.location or 'Any' }} | <strong>Type:</strong> {{ alert.job_type or 'Any' }}</span>
+        <form method="post" action="{{ url_for('delete_alert', alert_id=alert.id) }}" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    {% else %}
+    <p>You have no job alerts.</p>
+    {% endfor %}
+</div>
+{% endblock %}

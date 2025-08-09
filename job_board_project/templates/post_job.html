@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Post a Job - Bluzen MHS{% endblock %}
+
+{% block content %}
+<!-- Hero section for post job page -->
+<section class="post-job-hero">
+    <h1>Post a Healthcare Job</h1>
+    <p>List your job opening and connect with qualified healthcare professionals fast.</p>
+</section>
+
+<!-- Job submission form -->
+<section class="post-job-section">
+    <h2>Submit Job Details</h2>
+    <form method="post" class="post-job-form">
+        <div class="form-group">
+            <label for="company_name">Facility or Company Name*</label>
+            <input type="text" id="company_name" name="company_name" value="{{ request.form.get('company_name', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_name">Contact Name</label>
+            <input type="text" id="contact_name" name="contact_name" value="{{ request.form.get('contact_name', '') }}">
+        </div>
+        <div class="form-group">
+            <label for="contact_email">Contact Email*</label>
+            <input type="email" id="contact_email" name="contact_email" value="{{ request.form.get('contact_email', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Job Title*</label>
+            <input type="text" id="title" name="title" value="{{ request.form.get('title', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location*</label>
+            <input type="text" id="location" name="location" value="{{ request.form.get('location', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="job_type">Job Type*</label>
+            <select id="job_type" name="job_type" required>
+                <option value="" disabled {% if not request.form.get('job_type') %}selected{% endif %}>Select...</option>
+                <option value="Full-Time" {% if request.form.get('job_type') == 'Full-Time' %}selected{% endif %}>Full-Time</option>
+                <option value="Part-Time" {% if request.form.get('job_type') == 'Part-Time' %}selected{% endif %}>Part-Time</option>
+                <option value="Per Diem" {% if request.form.get('job_type') == 'Per Diem' %}selected{% endif %}>Per Diem</option>
+                <option value="Travel" {% if request.form.get('job_type') == 'Travel' %}selected{% endif %}>Travel</option>
+                <option value="Contract" {% if request.form.get('job_type') == 'Contract' %}selected{% endif %}>Contract</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Job Description*</label>
+            <textarea id="description" name="description" rows="5" required>{{ request.form.get('description', '') }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="qualifications">Qualifications</label>
+            <textarea id="qualifications" name="qualifications" rows="4">{{ request.form.get('qualifications', '') }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="pay_rate">Pay Rate / Salary</label>
+            <input type="text" id="pay_rate" name="pay_rate" value="{{ request.form.get('pay_rate', '') }}">
+        </div>
+        <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" rows="3">{{ request.form.get('notes', '') }}</textarea>
+        </div>
+        <button type="submit">Post Job</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Jobs - Bluzen MHS{% endblock %}
+
+{% block content %}
+
+<!-- Hero section -->
+<section class="jobs-hero">
+    <h1>Find Your Next Healthcare Career</h1>
+    <p>Connect with top hospitals and medical facilities nationwide. Browse opportunities tailored to your expertise.</p>
+    <div class="stats-row">
+        <div class="stat-item">
+            <div class="stat-number">{{ jobs|length }}</div>
+            <div class="stat-label">Active Jobs</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1,200+</div>
+            <div class="stat-label">Healthcare Facilities</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50</div>
+            <div class="stat-label">States Covered</div>
+        </div>
+    </div>
+</section>
+
+<!-- Search and quick filters -->
+<section class="jobs-search">
+    <form method="get" class="search-form">
+        <input type="text" name="search" value="{{ request.args.get('search', '') }}" placeholder="Job title, keywords, or company">
+        <input type="text" name="location" value="{{ request.args.get('location', '') }}" placeholder="City, state, or zip code">
+        <select name="job_type">
+            <option value="">All Job Types</option>
+            <option value="Full-Time" {% if request.args.get('job_type') == 'Full-Time' %}selected{% endif %}>Full-Time</option>
+            <option value="Part-Time" {% if request.args.get('job_type') == 'Part-Time' %}selected{% endif %}>Part-Time</option>
+            <option value="Per Diem" {% if request.args.get('job_type') == 'Per Diem' %}selected{% endif %}>Per Diem</option>
+            <option value="Travel" {% if request.args.get('job_type') == 'Travel' %}selected{% endif %}>Travel</option>
+            <option value="Contract" {% if request.args.get('job_type') == 'Contract' %}selected{% endif %}>Contract</option>
+        </select>
+        <button type="submit">Search Jobs</button>
+    </form>
+    <div class="quick-filters">
+        <span class="filter-label">Popular:</span>
+        <a href="{{ url_for('jobs') }}" class="filter-chip {% if not request.args.get('job_type') %}active{% endif %}">All Jobs</a>
+        <a href="{{ url_for('jobs', job_type='Registered Nurse') }}" class="filter-chip {% if request.args.get('job_type') == 'Registered Nurse' %}active{% endif %}">Registered Nurse</a>
+        <a href="{{ url_for('jobs', job_type='Travel Nurse') }}" class="filter-chip {% if request.args.get('job_type') == 'Travel Nurse' %}active{% endif %}">Travel Nurse</a>
+        <a href="{{ url_for('jobs', job_type='LPN') }}" class="filter-chip {% if request.args.get('job_type') == 'LPN' %}active{% endif %}">LPN</a>
+        <a href="{{ url_for('jobs', job_type='CNA') }}" class="filter-chip {% if request.args.get('job_type') == 'CNA' %}active{% endif %}">CNA</a>
+        <a href="{{ url_for('jobs', job_type='Therapist') }}" class="filter-chip {% if request.args.get('job_type') == 'Therapist' %}active{% endif %}">Therapist</a>
+    </div>
+</section>
+
+<!-- Main container with sidebar and listings -->
+<div class="jobs-main">
+    <!-- Sidebar filters -->
+    <aside class="jobs-sidebar">
+        <div class="filter-card">
+            <div class="filter-title">Filter Results</div>
+            <!-- Filter by job type -->
+            <div class="filter-section">
+                <div class="filter-section-title">Job Type</div>
+                <div class="checkbox-list">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ft" onclick="window.location='{{ url_for('jobs', job_type='Full-Time') }}'" {% if request.args.get('job_type') == 'Full-Time' %}checked{% endif %}>
+                        <label for="ft">Full-Time</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="pt" onclick="window.location='{{ url_for('jobs', job_type='Part-Time') }}'" {% if request.args.get('job_type') == 'Part-Time' %}checked{% endif %}>
+                        <label for="pt">Part-Time</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="travel" onclick="window.location='{{ url_for('jobs', job_type='Travel') }}'" {% if request.args.get('job_type') == 'Travel' %}checked{% endif %}>
+                        <label for="travel">Travel</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="perdiem" onclick="window.location='{{ url_for('jobs', job_type='Per Diem') }}'" {% if request.args.get('job_type') == 'Per Diem' %}checked{% endif %}>
+                        <label for="perdiem">Per Diem</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="contract" onclick="window.location='{{ url_for('jobs', job_type='Contract') }}'" {% if request.args.get('job_type') == 'Contract' %}checked{% endif %}>
+                        <label for="contract">Contract</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Job listings -->
+    <div class="jobs-list">
+        <div class="results-info">Showing {{ jobs|length }} job{{ '' if jobs|length == 1 else 's' }}</div>
+        {% for job in jobs %}
+        <div class="job-card" onclick="window.location='{{ url_for('job_detail', job_id=job.id) }}'">
+            <div class="job-card-header">
+                <div class="job-main-info">
+                    <a href="{{ url_for('job_detail', job_id=job.id) }}" class="job-title">{{ job.title }}</a>
+                    <div class="company-info">
+                        <span class="company-name">{{ job.company_name or 'N/A' }}</span>
+                        <span class="job-location">{{ job.location }}</span>
+                    </div>
+                </div>
+                <!-- Show pay rate if available; otherwise display job type -->
+                <div class="job-salary">
+                    {% if job.pay_rate %}
+                        {{ job.pay_rate }}
+                    {% else %}
+                        {{ job.job_type }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="meta-item">Posted {{ job.created_at.strftime('%Y-%m-%d') }}</div>
+                <div class="meta-item">Qualifications: {{ job.qualifications or 'N/A' }}</div>
+            </div>
+            <div class="job-description">{{ job.description[:200] }}{% if job.description|length > 200 %}...{% endif %}</div>
+            <div class="job-actions">
+                <div class="job-posted">{{ job.created_at.strftime('%b %d, %Y') }}</div>
+                <div class="action-buttons">
+                    <button class="btn-apply" onclick="window.location='{{ url_for('job_detail', job_id=job.id) }}'; event.stopPropagation();">Apply</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if not jobs %}
+        <p>No jobs found.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

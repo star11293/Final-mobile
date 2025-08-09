@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ job.title }} - Bluzen MHS{% endblock %}
+
+{% block content %}
+<h2>{{ job.title }}</h2>
+<div class="meta">
+    <!-- Display company/facility name if available -->
+    {% if job.company_name %}
+    <strong>{{ job.company_name }}</strong> •
+    {% endif %}
+    {{ job.location }} • {{ job.job_type }} • Posted {{ job.created_at.strftime('%Y-%m-%d') }}
+    {% if job.pay_rate %}
+    • Pay: {{ job.pay_rate }}
+    {% endif %}
+</div>
+<p>{{ job.description }}</p>
+{% if job.qualifications %}
+<h3>Qualifications</h3>
+<p>{{ job.qualifications }}</p>
+{% endif %}
+
+{% if job.notes %}
+<h3>Additional Notes</h3>
+<p>{{ job.notes }}</p>
+{% endif %}
+
+<!-- Contact information section for employers -->
+{% if job.contact_name or job.contact_email %}
+<h3>Contact Information</h3>
+<p>
+    {% if job.contact_name %}
+    Contact: {{ job.contact_name }}<br>
+    {% endif %}
+    {% if job.contact_email %}
+    Email: <a href="mailto:{{ job.contact_email }}">{{ job.contact_email }}</a>
+    {% endif %}
+</p>
+{% endif %}
+
+{% if current_user.is_authenticated and current_user.role == 'seeker' %}
+<h3>Apply for this job</h3>
+<form method="post">
+    <div class="form-group">
+        <label for="resume">Resume*</label>
+        <textarea id="resume" name="resume" rows="5" required placeholder="Paste your resume text or summary here"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="cover_letter">Cover Letter</label>
+        <textarea id="cover_letter" name="cover_letter" rows="5" placeholder="Optional cover letter"></textarea>
+    </div>
+    <button type="submit">Submit Application</button>
+</form>
+{% else %}
+<p><strong>Log in as a job seeker to apply for this job.</strong></p>
+<a href="{{ url_for('login', next=url_for('job_detail', job_id=job.id)) }}" class="btn-primary">Login</a>
+{% endif %}
+{% endblock %}
