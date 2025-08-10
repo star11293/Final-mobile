@@ -1,2 +1,5 @@
 /jobs      https://bluzen-job-board-d279fed71e0c.herokuapp.com/      200
 /jobs/*    https://bluzen-job-board-d279fed71e0c.herokuapp.com/:splat 200
+/styles.css  https://bluzen-job-board-d279fed71e0c.herokuapp.com/styles.css   200
+/app.js      https://bluzen-job-board-d279fed71e0c.herokuapp.com/app.js       200
+/api/*       https://bluzen-job-board-d279fed71e0c.herokuapp.com/api/:splat   200
