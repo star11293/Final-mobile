@@ -1,0 +1,2 @@
+/jobs      https://bluzen-job-board-d279fed71e0c.herokuapp.com/      200
+/jobs/*    https://bluzen-job-board-d279fed71e0c.herokuapp.com/:splat 200
