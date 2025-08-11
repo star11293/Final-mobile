@@ -436,29 +436,49 @@ if (courseParam) {
     document.getElementById('registration-form').addEventListener('submit', function(e) {
   e.preventDefault();
   document.getElementById('success-message').style.display = 'block';
+// Helper to get query param
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
 
-  // Hide form and show PayPal button after success
+// Set hidden course field from URL on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const courseParam = getQueryParam('course');
+  if (courseParam) {
+    const courseInput = document.getElementById('reg-course');
+    if (courseInput) courseInput.value = courseParam;
+  }
+});
+
+// Registration form submit: hide form, show PayPal button for course
+document.getElementById('registration-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('success-message').style.display = 'block';
+
+  // Hide form and show PayPal button after short delay
   setTimeout(() => {
     document.getElementById('success-message').style.display = 'none';
     document.getElementById('registration-form').style.display = 'none';
     showPayPalButton();
   }, 1200);
 
-  // Clear fields
+  // Optionally reset fields except date/course
   this.reg_name.value = '';
   this.reg_email.value = '';
-  this.reg_time.selectedIndex = 0;
+  this.reg_time.value = '';
 });
 
 function showPayPalButton() {
-  const course = document.getElementById('reg-course').value.toUpperCase();
+  const course = (document.getElementById('reg-course').value || '').toUpperCase();
   document.getElementById('paypal-buttons').style.display = 'block';
   if (course === 'BLS') document.getElementById('paypal-bls').style.display = 'block';
   else if (course === 'ACLS') document.getElementById('paypal-acls').style.display = 'block';
   else if (course === 'PALS') document.getElementById('paypal-pals').style.display = 'block';
   else if (course === 'BLOOD') document.getElementById('paypal-blood').style.display = 'block';
+  else document.getElementById('paypal-buttons').innerHTML = '<div style="color:red;">Course not recognized. Please try again.</div>';
 }
-
+    
     // Optionally reset fields except the date
     this.reg_name.value = '';
     this.reg_email.value = '';
