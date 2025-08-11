@@ -130,7 +130,20 @@
     <div class="calendar-header">Available Dates - August 2025</div>
     <div class="calendar" id="calendar"></div>
   </div>
+
  <script>
+   // Get course from URL and set hidden form field
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+const courseParam = getQueryParam('course');
+if (courseParam) {
+  document.addEventListener('DOMContentLoaded', function() {
+    const courseInput = document.getElementById('reg-course');
+    if (courseInput) courseInput.value = courseParam;
+  });
+}
   // State for current month/year
   let today = new Date();
   let year = today.getFullYear();
@@ -282,6 +295,32 @@
 
     <button type="submit">Register</button>
     <div class="success-message" id="success-message" style="display:none;">Registration submitted!</div>
+    <div id="paypal-buttons" style="display:none; text-align:center; margin-top:20px;">
+  <div id="paypal-bls" style="display:none;">
+    <a href="https://www.paypal.com/ncp/payment/5MRNC99WPY3TC" target="_blank">
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal BLS" style="height:48px;">
+    </a>
+    <div>BLS Certification Payment</div>
+  </div>
+  <div id="paypal-acls" style="display:none;">
+    <a href="https://www.paypal.com/ncp/payment/7BZ6TVTY3T29A" target="_blank">
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal ACLS" style="height:48px;">
+    </a>
+    <div>ACLS Certification Payment</div>
+  </div>
+  <div id="paypal-pals" style="display:none;">
+    <a href="https://www.paypal.com/ncp/payment/SNS9PHURF28Q4" target="_blank">
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal PALS" style="height:48px;">
+    </a>
+    <div>PALS Certification Payment</div>
+  </div>
+  <div id="paypal-blood" style="display:none;">
+    <a href="https://www.paypal.com/ncp/payment/6JG97D336NFJU" target="_blank">
+      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal Blood Pathogen" style="height:48px;">
+    </a>
+    <div>Bloodborne Pathogen Payment</div>
+  </div>
+</div>
   </form>
 </div>
 
@@ -397,6 +436,31 @@
     // Your form handling logic here (AJAX, etc). For demo, just show message.
     document.getElementById('success-message').style.display = 'block';
     setTimeout(()=>{ document.getElementById('success-message').style.display='none'; }, 2500);
+    document.getElementById('registration-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('success-message').style.display = 'block';
+
+  // Hide form and show PayPal button after success
+  setTimeout(() => {
+    document.getElementById('success-message').style.display = 'none';
+    document.getElementById('registration-form').style.display = 'none';
+    showPayPalButton();
+  }, 1200);
+
+  // Clear fields
+  this.reg_name.value = '';
+  this.reg_email.value = '';
+  this.reg_time.selectedIndex = 0;
+});
+
+function showPayPalButton() {
+  const course = document.getElementById('reg-course').value.toUpperCase();
+  document.getElementById('paypal-buttons').style.display = 'block';
+  if (course === 'BLS') document.getElementById('paypal-bls').style.display = 'block';
+  else if (course === 'ACLS') document.getElementById('paypal-acls').style.display = 'block';
+  else if (course === 'PALS') document.getElementById('paypal-pals').style.display = 'block';
+  else if (course === 'BLOOD') document.getElementById('paypal-blood').style.display = 'block';
+}
 
     // Optionally reset fields except the date
     this.reg_name.value = '';
