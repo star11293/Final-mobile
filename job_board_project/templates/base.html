@@ -11,7 +11,7 @@
         <div class="container">
             <a class="brand" href="{{ url_for('home') }}">Bluzen MHS</a>
             <ul class="nav-links">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
+               
                 <li><a href="{{ url_for('jobs') }}">Jobs</a></li>
                 {% if current_user.is_authenticated and current_user.role == 'employer' %}
                 <li><a href="{{ url_for('post_job') }}">Post a Job</a></li>
