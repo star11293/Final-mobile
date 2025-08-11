@@ -32,24 +32,6 @@
       margin-bottom: 10px;
       letter-spacing: 2px;
       text-shadow: 1px 1px 10px #e1f5fe;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .calendar-header button {
-      border: none;
-      background: #e1f5fe;
-      color: #1976d2;
-      border-radius: 10px;
-      padding: 6px 10px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 8px rgba(33,150,243,0.12);
-    }
-    .calendar-header button:hover {
-      background: #bbdefb;
     }
     .calendar {
       display: grid;
@@ -66,7 +48,6 @@
       font-weight: 600;
       transition: background 0.2s, color 0.2s, transform 0.2s;
       user-select: none;
-      min-height: 48px;
     }
     .calendar-day {
       background: #b3e5fc;
@@ -94,7 +75,7 @@
     .calendar-date.available:hover {
       background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
       color: #ffffff;
-      transform: scale(1.07);
+      transform: scale(1.13) rotate(-3deg);
       box-shadow: 0 4px 24px rgba(33,150,243,0.35);
     }
     .calendar-date.today {
@@ -109,109 +90,10 @@
       width: 100%;
       height: 100%;
     }
-
-    /* Registration styles */
-    .registration-container {
-      max-width: 560px;
-      margin: 28px auto 20px auto;
-      background: #f8fcff;
-      box-shadow: 0 8px 32px rgba(33,150,243,0.13);
-      border-radius: 24px;
-      padding: 24px 20px 20px 20px;
-      animation: popin 1s cubic-bezier(.68,-0.55,.27,1.55);
-      display: none;
-    }
-    .registration-header {
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #1976d2;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-    .registration-subheader {
-      text-align: center;
-      font-size: 0.98em;
-      color: #337cc7;
-      margin-bottom: 16px;
-    }
-    .registration-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .registration-form label {
-      font-weight: 600;
-      color: #0288d1;
-      margin-bottom: 3px;
-    }
-    .registration-form input, .registration-form select {
-      padding: 10px 8px;
-      border: 1.5px solid #b3e5fc;
-      border-radius: 8px;
-      font-size: 1em;
-      background: #e1f5fe;
-      color: #1976d2;
-      outline: none;
-      transition: border 0.2s, background 0.2s;
-    }
-    .registration-form input:focus, .registration-form select:focus {
-      border: 1.5px solid #64b5f6;
-      background: #f3f9ff;
-    }
-    .registration-form button {
-      margin-top: 8px;
-      padding: 12px 0;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #64b5f6 0%, #90caf9 100%);
-      color: #fff;
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      box-shadow: 0 2px 8px rgba(33,150,243,0.11);
-    }
-    .registration-form button:hover {
-      background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
-      transform: scale(1.03);
-    }
-    .success-message {
-      color: #2196f3;
-      font-weight: 600;
-      margin-top: 12px;
-      text-align: center;
-      display: none;
-    }
-
-    /* Payment section */
-    .payment-section {
-      text-align: center;
-      margin-top: 16px;
-      display: none;
-    }
-    .payment-title {
-      font-weight: 700;
-      color: #1976d2;
-      margin-bottom: 8px;
-    }
-    .paypal-btns > div {
-      margin: 10px 0 16px 0;
-    }
-    .paypal-btns img {
-      height: 48px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
-    }
-    .note {
-      color: #2368a2;
-      font-size: 0.95em;
-      margin-top: 8px;
-    }
-
-    /* Tablet/smaller */
+    /* Existing media query for tablets and small screens */
     @media (max-width: 700px) {
       .calendar-container {
-        padding: 15px 8px;
+        padding: 15px 3px;
       }
       .calendar-header {
         font-size: 1.4em;
@@ -219,35 +101,25 @@
       .calendar {
         font-size: 1em;
       }
-      .registration-container {
-        padding: 16px 10px 14px 10px;
-        max-width: 97vw;
-      }
-      .registration-header {
-        font-size: 1.15em;
-      }
-      .registration-form input, .registration-form select {
-        font-size: 0.97em;
-      }
-      .registration-form button {
-        font-size: 1em;
-      }
     }
-
-    /* Small phones */
+    /* Extra mobile responsiveness for very small screens */
     @media (max-width: 480px) {
       .calendar-container {
-        margin: 10px 6px;
-        padding: 12px 8px;
+        margin: 10px 2px;
+        padding: 8px 2px;
         border-radius: 16px;
       }
+      .calendar-header {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+      }
       .calendar {
-        font-size: 0.92em;
-        gap: 6px;
+        font-size: 0.9em;
+        gap: 4px;
       }
       .calendar-day,
       .calendar-date {
-        padding: 10px 0;
+        padding: 8px 0;
         font-size: 0.95em;
       }
     }
