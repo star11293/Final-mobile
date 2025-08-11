@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Light Blue Calendar</title>
   <style>
     body {
@@ -32,6 +32,24 @@
       margin-bottom: 10px;
       letter-spacing: 2px;
       text-shadow: 1px 1px 10px #e1f5fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .calendar-header button {
+      border: none;
+      background: #e1f5fe;
+      color: #1976d2;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.12);
+    }
+    .calendar-header button:hover {
+      background: #bbdefb;
     }
     .calendar {
       display: grid;
@@ -48,6 +66,7 @@
       font-weight: 600;
       transition: background 0.2s, color 0.2s, transform 0.2s;
       user-select: none;
+      min-height: 48px;
     }
     .calendar-day {
       background: #b3e5fc;
@@ -75,7 +94,7 @@
     .calendar-date.available:hover {
       background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
       color: #ffffff;
-      transform: scale(1.13) rotate(-3deg);
+      transform: scale(1.07);
       box-shadow: 0 4px 24px rgba(33,150,243,0.35);
     }
     .calendar-date.today {
@@ -90,10 +109,109 @@
       width: 100%;
       height: 100%;
     }
-    /* Existing media query for tablets and small screens */
+
+    /* Registration styles */
+    .registration-container {
+      max-width: 560px;
+      margin: 28px auto 20px auto;
+      background: #f8fcff;
+      box-shadow: 0 8px 32px rgba(33,150,243,0.13);
+      border-radius: 24px;
+      padding: 24px 20px 20px 20px;
+      animation: popin 1s cubic-bezier(.68,-0.55,.27,1.55);
+      display: none;
+    }
+    .registration-header {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #1976d2;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .registration-subheader {
+      text-align: center;
+      font-size: 0.98em;
+      color: #337cc7;
+      margin-bottom: 16px;
+    }
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .registration-form label {
+      font-weight: 600;
+      color: #0288d1;
+      margin-bottom: 3px;
+    }
+    .registration-form input, .registration-form select {
+      padding: 10px 8px;
+      border: 1.5px solid #b3e5fc;
+      border-radius: 8px;
+      font-size: 1em;
+      background: #e1f5fe;
+      color: #1976d2;
+      outline: none;
+      transition: border 0.2s, background 0.2s;
+    }
+    .registration-form input:focus, .registration-form select:focus {
+      border: 1.5px solid #64b5f6;
+      background: #f3f9ff;
+    }
+    .registration-form button {
+      margin-top: 8px;
+      padding: 12px 0;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #64b5f6 0%, #90caf9 100%);
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.11);
+    }
+    .registration-form button:hover {
+      background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
+      transform: scale(1.03);
+    }
+    .success-message {
+      color: #2196f3;
+      font-weight: 600;
+      margin-top: 12px;
+      text-align: center;
+      display: none;
+    }
+
+    /* Payment section */
+    .payment-section {
+      text-align: center;
+      margin-top: 16px;
+      display: none;
+    }
+    .payment-title {
+      font-weight: 700;
+      color: #1976d2;
+      margin-bottom: 8px;
+    }
+    .paypal-btns > div {
+      margin: 10px 0 16px 0;
+    }
+    .paypal-btns img {
+      height: 48px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+    }
+    .note {
+      color: #2368a2;
+      font-size: 0.95em;
+      margin-top: 8px;
+    }
+
+    /* Tablet/smaller */
     @media (max-width: 700px) {
       .calendar-container {
-        padding: 15px 3px;
+        padding: 15px 8px;
       }
       .calendar-header {
         font-size: 1.4em;
@@ -101,25 +219,35 @@
       .calendar {
         font-size: 1em;
       }
+      .registration-container {
+        padding: 16px 10px 14px 10px;
+        max-width: 97vw;
+      }
+      .registration-header {
+        font-size: 1.15em;
+      }
+      .registration-form input, .registration-form select {
+        font-size: 0.97em;
+      }
+      .registration-form button {
+        font-size: 1em;
+      }
     }
-    /* Extra mobile responsiveness for very small screens */
+
+    /* Small phones */
     @media (max-width: 480px) {
       .calendar-container {
-        margin: 10px 2px;
-        padding: 8px 2px;
+        margin: 10px 6px;
+        padding: 12px 8px;
         border-radius: 16px;
       }
-      .calendar-header {
-        font-size: 1.1em;
-        margin-bottom: 8px;
-      }
       .calendar {
-        font-size: 0.9em;
-        gap: 4px;
+        font-size: 0.92em;
+        gap: 6px;
       }
       .calendar-day,
       .calendar-date {
-        padding: 8px 0;
+        padding: 10px 0;
         font-size: 0.95em;
       }
     }
@@ -127,363 +255,295 @@
 </head>
 <body>
   <div class="calendar-container">
-    <div class="calendar-header">Available Dates - August 2025</div>
+    <div class="calendar-header">
+      <button id="prev-month" aria-label="Previous month">&#8592;</button>
+      <span id="month-year-label">Available Dates</span>
+      <button id="next-month" aria-label="Next month">&#8594;</button>
+    </div>
     <div class="calendar" id="calendar"></div>
   </div>
 
- <script>
-   // Get course from URL and set hidden form field
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
-const courseParam = getQueryParam('course');
-if (courseParam) {
-  document.addEventListener('DOMContentLoaded', function() {
-    const courseInput = document.getElementById('reg-course');
-    if (courseInput) courseInput.value = courseParam;
-  });
-}
-  // State for current month/year
-  let today = new Date();
-  let year = today.getFullYear();
-  let month = today.getMonth(); // 0-indexed
+  <!-- Registration Form Section -->
+  <div class="registration-container" id="registration-container">
+    <h2 class="registration-header">Register for a Date & Time</h2>
+    <div class="registration-subheader" id="course-label" aria-live="polite"></div>
 
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const calendar = document.getElementById('calendar');
-  const calendarHeader = document.querySelector('.calendar-header');
+    <form class="registration-form" id="registration-form" novalidate>
+      <label for="reg-date">Date:</label>
+      <input type="text" id="reg-date" name="date" readonly />
+      <input type="hidden" id="reg-course" name="course" />
 
-  // Add navigation buttons to header
-  calendarHeader.innerHTML = `
-    <button id="prev-month" style="margin-right:10px;">&#8592;</button>
-    <span id="month-year-label"></span>
-    <button id="next-month" style="margin-left:10px;">&#8594;</button>
-  `;
+      <label for="reg-time">Time:</label>
+      <input type="text" id="reg-time" name="time" value="4:00pm - 8:00pm" readonly />
 
-  // Update header label
-  function updateHeader() {
-    const label = document.getElementById('month-year-label');
-    const displayMonth = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
-    label.innerText = `Available Dates - ${displayMonth}`;
-  }
+      <label for="reg-name">Your Name:</label>
+      <input type="text" id="reg-name" name="name" required placeholder="Enter your name" />
 
-  // Build the calendar for current month and year
-  function buildCalendar() {
-    // Clear previous calendar days
-    calendar.innerHTML = '';
+      <label for="reg-email">Email:</label>
+      <input type="email" id="reg-email" name="email" required placeholder="Enter your email" />
 
-    // Add day headers
-    daysOfWeek.forEach(day => {
-      const div = document.createElement('div');
-      div.className = 'calendar-day';
-      div.innerText = day;
-      calendar.appendChild(div);
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required />
+
+      <button type="submit">Register</button>
+      <div class="success-message" id="success-message">Registration submitted!</div>
+    </form>
+
+    <!-- Payment Section (hidden until submit) -->
+    <div class="payment-section" id="payment-section">
+      <div class="payment-title" id="payment-title">Complete Your Payment</div>
+      <div class="paypal-btns" id="paypal-buttons">
+        <!-- BLS -->
+        <div id="paypal-bls" style="display:none;">
+          <a href="https://www.paypal.com/ncp/payment/5MRNC99WPY3TC" target="_blank" rel="noopener">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Pay with PayPal for BLS" />
+          </a>
+          <div class="note">BLS Certification Payment</div>
+        </div>
+        <!-- ACLS -->
+        <div id="paypal-acls" style="display:none;">
+          <a href="https://www.paypal.com/ncp/payment/7BZ6TVTY3T29A" target="_blank" rel="noopener">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Pay with PayPal for ACLS" />
+          </a>
+          <div class="note">ACLS Certification Payment</div>
+        </div>
+        <!-- PALS -->
+        <div id="paypal-pals" style="display:none;">
+          <a href="https://www.paypal.com/ncp/payment/SNS9PHURF28Q4" target="_blank" rel="noopener">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Pay with PayPal for PALS" />
+          </a>
+          <div class="note">PALS Certification Payment</div>
+        </div>
+        <!-- Bloodborne Pathogens -->
+        <div id="paypal-blood" style="display:none;">
+          <a href="https://www.paypal.com/ncp/payment/6JG97D336NFJU" target="_blank" rel="noopener">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Pay with PayPal for Bloodborne Pathogens" />
+          </a>
+          <div class="note">Bloodborne Pathogens Payment</div>
+        </div>
+
+        <!-- Fallback: show all if course is unknown -->
+        <div id="paypal-all" style="display:none;">
+          <div class="note">Course not detected — choose your payment link:</div>
+          <div style="margin-top:8px;">
+            <div style="margin:6px 0;">
+              <a href="https://www.paypal.com/ncp/payment/5MRNC99WPY3TC" target="_blank" rel="noopener">Pay for BLS</a>
+            </div>
+            <div style="margin:6px 0;">
+              <a href="https://www.paypal.com/ncp/payment/7BZ6TVTY3T29A" target="_blank" rel="noopener">Pay for ACLS</a>
+            </div>
+            <div style="margin:6px 0;">
+              <a href="https://www.paypal.com/ncp/payment/SNS9PHURF28Q4" target="_blank" rel="noopener">Pay for PALS</a>
+            </div>
+            <div style="margin:6px 0;">
+              <a href="https://www.paypal.com/ncp/payment/6JG97D336NFJU" target="_blank" rel="noopener">Pay for Bloodborne Pathogens</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="note">After payment, you'll receive confirmation via email.</div>
+    </div>
+  </div>
+
+  <script>
+    // Utilities
+    function pad2(n) { return String(n).padStart(2, '0'); }
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Course mapping
+    const COURSE_TITLES = {
+      BLS: 'BLS Certification & Renewal',
+      ACLS: 'ACLS Certification & Renewal',
+      PALS: 'PALS Certification & Renewal',
+      BLOOD: 'Bloodborne Pathogens Course'
+    };
+
+    // Calendar state
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth(); // 0-indexed
+
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const calendar = document.getElementById('calendar');
+    const calendarHeaderLabel = document.getElementById('month-year-label');
+
+    // Render header label
+    function updateHeader() {
+      const displayMonth = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
+      calendarHeaderLabel.innerText = `Available Dates - ${displayMonth}`;
+    }
+
+    // Build the calendar for the current month and year
+    function buildCalendar() {
+      // Clear previous calendar days
+      calendar.innerHTML = '';
+
+      // Day headers
+      daysOfWeek.forEach(day => {
+        const div = document.createElement('div');
+        div.className = 'calendar-day';
+        div.innerText = day;
+        calendar.appendChild(div);
+      });
+
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const availableDates = [];
+
+      // Mondays (1) and Thursdays (4)
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dayOfWeek = new Date(year, month, d).getDay();
+        if (dayOfWeek === 1 || dayOfWeek === 4) {
+          availableDates.push(d);
+        }
+      }
+
+      // Offset blanks before day 1
+      const firstDay = new Date(year, month, 1).getDay();
+      for (let i = 0; i < firstDay; i++) {
+        const div = document.createElement('div');
+        div.className = 'calendar-date';
+        calendar.appendChild(div);
+      }
+
+      // Fill dates
+      for (let d = 1; d <= daysInMonth; d++) {
+        const div = document.createElement('div');
+        div.className = 'calendar-date';
+
+        // Today style
+        if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
+          div.classList.add('today');
+        }
+
+        if (availableDates.includes(d)) {
+          div.classList.add('available');
+          const a = document.createElement('a');
+          a.href = "#registration-container";
+          a.innerText = d;
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dateString = `${year}-${pad2(month+1)}-${pad2(d)}`;
+            openRegistration(dateString);
+          });
+          div.appendChild(a);
+        } else {
+          div.innerText = d;
+        }
+
+        calendar.appendChild(div);
+      }
+    }
+
+    function openRegistration(dateString) {
+      const container = document.getElementById('registration-container');
+      const dateInput = document.getElementById('reg-date');
+      dateInput.value = dateString;
+      container.style.display = 'block';
+      setTimeout(() => {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+
+    // Prev/Next navigation
+    document.getElementById('prev-month').addEventListener('click', () => {
+      month -= 1;
+      if (month < 0) { month = 11; year -= 1; }
+      updateHeader(); buildCalendar();
+    });
+    document.getElementById('next-month').addEventListener('click', () => {
+      month += 1;
+      if (month > 11) { month = 0; year += 1; }
+      updateHeader(); buildCalendar();
     });
 
-    // Find all Mondays and Thursdays for this month
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const availableDates = [];
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dayOfWeek = new Date(year, month, d).getDay();
-      if (dayOfWeek === 1 || dayOfWeek === 4) { // Monday=1, Thursday=4
-        availableDates.push(d);
-      }
-    }
+    // On load: set course label/hidden input if provided
+    document.addEventListener('DOMContentLoaded', () => {
+      const courseParamRaw = getQueryParam('course');
+      const courseParam = courseParamRaw ? courseParamRaw.toUpperCase() : '';
+      const courseInput = document.getElementById('reg-course');
+      const courseLabel = document.getElementById('course-label');
 
-    // First day of the month
-    const firstDay = new Date(year, month, 1).getDay();
-
-    // Fill in blank days before first
-    for (let i = 0; i < firstDay; i++) {
-      const div = document.createElement('div');
-      div.className = 'calendar-date';
-      calendar.appendChild(div);
-    }
-
-    // Fill in days
-    for (let d = 1; d <= daysInMonth; d++) {
-      const div = document.createElement('div');
-      div.className = 'calendar-date';
-
-      // Highlight today if in current month/year
-      if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
-        div.classList.add('today');
-      }
-
-      // Mark available Mondays and Thursdays
-      if (availableDates.includes(d)) {
-        div.classList.add('available');
-        const a = document.createElement('a');
-        a.href = "#registration-container";
-        a.innerText = d;
-        a.addEventListener('click', function(e) {
-          e.preventDefault();
-          const dateString = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
-          document.getElementById('registration-container').style.display = '';
-          document.getElementById('reg-date').value = dateString;
-          setTimeout(() => {
-            document.getElementById('registration-container').scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        });
-        div.appendChild(a);
+      if (courseParam) {
+        courseInput.value = courseParam;
+        const title = COURSE_TITLES[courseParam] || courseParam;
+        courseLabel.textContent = `Selected Course: ${title}`;
       } else {
-        div.innerText = d;
+        courseLabel.textContent = 'No course selected yet';
       }
-      calendar.appendChild(div);
-    }
-  }
 
-  // Navigation functions
-  document.getElementById('prev-month').onclick = function() {
-    month -= 1;
-    if (month < 0) {
-      month = 11;
-      year -= 1;
-    }
-    updateHeader();
-    buildCalendar();
-  };
-  document.getElementById('next-month').onclick = function() {
-    month += 1;
-    if (month > 11) {
-      month = 0;
-      year += 1;
-    }
-    updateHeader();
-    buildCalendar();
-  };
+      updateHeader();
+      buildCalendar();
+    });
 
-  // Initial render
-  updateHeader();
-  buildCalendar();
-
-  // Registration form logic (unchanged)
-  document.getElementById('registration-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('success-message').style.display = 'block';
-    setTimeout(()=>{ document.getElementById('success-message').style.display='none'; }, 2500);
-    this.reg_name.value = '';
-    this.reg_email.value = '';
-    this.reg_time.selectedIndex = 0;
-  });
-</script>
-  <!-- Registration Form Section -->
-<div class="registration-container" id="registration-container" style="display:none;">
-  <h2 class="registration-header">Register for a Date & Time Slot</h2>
-  <form class="registration-form" id="registration-form">
-    <label for="reg-date">Date:</label>
-    <input type="text" id="reg-date" name="date" readonly>
-    <input type="hidden" id="reg-course" name="course">
-
-  <label for="reg-time">Time:</label>
-<select id="reg-time" name="time" required>
-  <option value="4:00pm - 8:00pm">4:00pm - 8:00pm</option>
-</select>
-
-    <label for="reg-name">Your Name:</label>
-    <input type="text" id="reg-name" name="name" required placeholder="Enter your name">
-
-    <label for="reg-email">Email:</label>
-    <input type="email" id="reg-email" name="email" required placeholder="Enter your email">
-
-     <label for="phone">Phone Number:</label>
-  <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
-
-
-    <button type="submit">Register</button>
-    <div class="success-message" id="success-message" style="display:none;">Registration submitted!</div>
-    <div id="paypal-buttons" style="display:none; text-align:center; margin-top:20px;">
-  <div id="paypal-bls" style="display:none;">
-    <a href="https://www.paypal.com/ncp/payment/5MRNC99WPY3TC" target="_blank">
-      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal BLS" style="height:48px;">
-    </a>
-    <div>BLS Certification Payment</div>
-  </div>
-  <div id="paypal-acls" style="display:none;">
-    <a href="https://www.paypal.com/ncp/payment/7BZ6TVTY3T29A" target="_blank">
-      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal ACLS" style="height:48px;">
-    </a>
-    <div>ACLS Certification Payment</div>
-  </div>
-  <div id="paypal-pals" style="display:none;">
-    <a href="https://www.paypal.com/ncp/payment/SNS9PHURF28Q4" target="_blank">
-      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal PALS" style="height:48px;">
-    </a>
-    <div>PALS Certification Payment</div>
-  </div>
-  <div id="paypal-blood" style="display:none;">
-    <a href="https://www.paypal.com/ncp/payment/6JG97D336NFJU" target="_blank">
-      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal Blood Pathogen" style="height:48px;">
-    </a>
-    <div>Bloodborne Pathogen Payment</div>
-  </div>
-</div>
-  </form>
-</div>
-
-<style>
-  .registration-container {
-    max-width: 500px;
-    margin: 40px auto 20px auto;
-    background: #f8fcff;
-    box-shadow: 0 8px 32px rgba(33,150,243,0.13);
-    border-radius: 24px;
-    padding: 32px 20px 20px 20px;
-    animation: popin 1s cubic-bezier(.68,-0.55,.27,1.55);
-  }
-  .registration-header {
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #1976d2;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-  }
-  .registration-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .registration-form label {
-    font-weight: 600;
-    color: #0288d1;
-    margin-bottom: 3px;
-  }
-  .registration-form input, .registration-form select {
-    padding: 10px 8px;
-    border: 1.5px solid #b3e5fc;
-    border-radius: 8px;
-    font-size: 1em;
-    background: #e1f5fe;
-    color: #1976d2;
-    outline: none;
-    transition: border 0.2s;
-  }
-  .registration-form input:focus, .registration-form select:focus {
-    border: 1.5px solid #64b5f6;
-    background: #f3f9ff;
-  }
-  .registration-form button {
-    margin-top: 8px;
-    padding: 12px 0;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #64b5f6 0%, #90caf9 100%);
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(33,150,243,0.11);
-  }
-  .registration-form button:hover {
-    background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%);
-    transform: scale(1.05);
-  }
-  .success-message {
-    color: #2196f3;
-    font-weight: 600;
-    margin-top: 12px;
-    text-align: center;
-  }
-  @media (max-width: 700px) {
-    .registration-container {
-      padding: 15px 3px 12px 3px;
-      max-width: 97vw;
-    }
-    .registration-header {
-      font-size: 1.15em;
-    }
-    .registration-form input, .registration-form select {
-      font-size: 0.97em;
-    }
-    .registration-form button {
-      font-size: 1em;
-    }
-  }
-</style>
-
-<script>
-  // Find all available date links and add registration link + click event
-  document.querySelectorAll('.calendar-date.available a').forEach(function(a) {
-    a.href = "#registration-container";
-    a.addEventListener('click', function(e) {
+    // Registration submit -> show PayPal button
+    document.getElementById('registration-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Get the day from the cell
-      const day = parseInt(a.innerText, 10);
-      // Get the month and year from the current calendar script
-      const year = 2025, month = 7; // August 2025, JS month is 0-indexed
-      const dateString = `${year}-${(month+1).toString().padStart(2,'0')}-${day.toString().padStart(2,'0')}`;
+      // Minimal client validation
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!name || !email || !phone) {
+        alert('Please fill in name, email, and phone.');
+        return;
+      }
 
-      // Show registration form and fill the date
-      document.getElementById('registration-container').style.display = '';
-      document.getElementById('reg-date').value = dateString;
+      // Show success briefly, then show payment section
+      const success = document.getElementById('success-message');
+      success.style.display = 'block';
 
-      // Scroll to form (for mobile)
       setTimeout(() => {
-        document.getElementById('registration-container').scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        success.style.display = 'none';
+        // Hide the form, show payment
+        document.getElementById('registration-form').style.display = 'none';
+        showPaymentButtons();
+      }, 800);
     });
-  });
 
-  // Handle registration form submission
-  document.getElementById('registration-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Your form handling logic here (AJAX, etc). For demo, just show message.
-    document.getElementById('success-message').style.display = 'block';
-    setTimeout(()=>{ document.getElementById('success-message').style.display='none'; }, 2500);
-    document.getElementById('registration-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('success-message').style.display = 'block';
-// Helper to get query param
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
+    function showPaymentButtons() {
+      // Hide all first
+      ['paypal-bls','paypal-acls','paypal-pals','paypal-blood','paypal-all'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
 
-// Set hidden course field from URL on page load
-document.addEventListener('DOMContentLoaded', function() {
-  const courseParam = getQueryParam('course');
-  if (courseParam) {
-    const courseInput = document.getElementById('reg-course');
-    if (courseInput) courseInput.value = courseParam;
-  }
-});
+      const paymentSection = document.getElementById('payment-section');
+      const paymentTitle = document.getElementById('payment-title');
+      const course = (document.getElementById('reg-course').value || '').toUpperCase();
 
-// Registration form submit: hide form, show PayPal button for course
-document.getElementById('registration-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('success-message').style.display = 'block';
+      // Update title with course
+      const title = COURSE_TITLES[course];
+      paymentTitle.textContent = title ? `Complete Your Payment - ${title}` : 'Complete Your Payment';
 
-  // Hide form and show PayPal button after short delay
-  setTimeout(() => {
-    document.getElementById('success-message').style.display = 'none';
-    document.getElementById('registration-form').style.display = 'none';
-    showPayPalButton();
-  }, 1200);
+      // Show relevant button or fallback
+      if (course === 'BLS') document.getElementById('paypal-bls').style.display = 'block';
+      else if (course === 'ACLS') document.getElementById('paypal-acls').style.display = 'block';
+      else if (course === 'PALS') document.getElementById('paypal-pals').style.display = 'block';
+      else if (course === 'BLOOD') document.getElementById('paypal-blood').style.display = 'block';
+      else document.getElementById('paypal-all').style.display = 'block';
 
-  // Optionally reset fields except date/course
-  this.reg_name.value = '';
-  this.reg_email.value = '';
-  this.reg_time.value = '';
-});
+      paymentSection.style.display = 'block';
+      paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
-function showPayPalButton() {
-  const course = (document.getElementById('reg-course').value || '').toUpperCase();
-  document.getElementById('paypal-buttons').style.display = 'block';
-  if (course === 'BLS') document.getElementById('paypal-bls').style.display = 'block';
-  else if (course === 'ACLS') document.getElementById('paypal-acls').style.display = 'block';
-  else if (course === 'PALS') document.getElementById('paypal-pals').style.display = 'block';
-  else if (course === 'BLOOD') document.getElementById('paypal-blood').style.display = 'block';
-  else document.getElementById('paypal-buttons').innerHTML = '<div style="color:red;">Course not recognized. Please try again.</div>';
-}
-    
-    // Optionally reset fields except the date
-    this.reg_name.value = '';
-    this.reg_email.value = '';
-    this.reg_time.selectedIndex = 0;
-  });
-</script>
+    // OPTIONAL: If you prefer auto-redirect to PayPal instead of showing a button,
+    // uncomment below and call redirectToPayPal(course) instead of showPaymentButtons() above.
+    /*
+    const PAYPAL_LINKS = {
+      BLS: 'https://www.paypal.com/ncp/payment/5MRNC99WPY3TC',
+      ACLS: 'https://www.paypal.com/ncp/payment/7BZ6TVTY3T29A',
+      PALS: 'https://www.paypal.com/ncp/payment/SNS9PHURF28Q4',
+      BLOOD: 'https://www.paypal.com/ncp/payment/6JG97D336NFJU'
+    };
+    function redirectToPayPal(course) {
+      const url = PAYPAL_LINKS[(course||'').toUpperCase()];
+      if (url) window.location.href = url;
+      else alert('Unknown course; please choose the correct payment link.');
+    }
+    */
+  </script>
 </body>
 </html>
